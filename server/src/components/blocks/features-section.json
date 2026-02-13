@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_features_sections",
+  "info": {
+    "displayName": "Features section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.feature-card",
+      "repeatable": true
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

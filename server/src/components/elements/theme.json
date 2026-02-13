@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_themes",
+  "info": {
+    "displayName": "theme"
+  },
+  "options": {},
+  "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "default": "white",
+      "enum": [
+        "white",
+        "black",
+        "orange"
+      ]
+    }
+  },
+  "config": {}
+}

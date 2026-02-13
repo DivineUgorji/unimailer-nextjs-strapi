@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_trust_badges_sections",
+  "info": {
+    "displayName": "Trust badges section"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

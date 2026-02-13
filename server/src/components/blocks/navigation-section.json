@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_blocks_navigation_sections",
+  "info": {
+    "displayName": "Navigation section"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "component",
+      "component": "elements.logo",
+      "repeatable": false
+    },
+    "navCta": {
+      "type": "component",
+      "component": "elements.button",
+      "repeatable": false
+    },
+    "links": {
+      "type": "component",
+      "component": "elements.link",
+      "repeatable": true
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

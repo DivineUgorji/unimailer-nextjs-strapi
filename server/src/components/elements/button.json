@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_elements_buttons",
+  "info": {
+    "displayName": "Button"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "isExternal": {
+      "type": "boolean",
+      "default": false
+    },
+    "backgroundColor": {
+      "type": "enumeration",
+      "enum": [
+        "black",
+        "orange"
+      ]
+    }
+  },
+  "config": {}
+}

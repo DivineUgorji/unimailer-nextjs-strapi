@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_blocks_stats_sections",
+  "info": {
+    "displayName": "stats section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
+    "stats": {
+      "type": "component",
+      "component": "elements.stats",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
