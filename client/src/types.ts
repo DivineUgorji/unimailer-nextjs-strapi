@@ -39,12 +39,19 @@ export interface statsprop {
   description: string;
 }
 
+export interface floatingIconProps {
+  id: number;
+  showIcon: boolean;
+  image: ImageProps;
+}
+
 type ComponentType =
   | "blocks.hero-section"
   | "blocks.trust-badges-section"
   | "blocks.navigation-section"
   | "blocks.features-section"
-  | "blocks.stats-section";
+  | "blocks.stats-section"
+  | "blocks.services-section";
 
 interface Base<
   T extends ComponentType,
@@ -64,7 +71,8 @@ export type Block =
   | TrustedBadgesSectionProps
   | NavigationSectionProps
   | FeaturesSectionProps
-  | StatsSectionProps;
+  | StatsSectionProps
+  | ServicesSectionProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -97,4 +105,12 @@ export interface StatsSectionProps extends Base<"blocks.stats-section"> {
   theme?: Theme;
   image: ImageProps;
   stats: statsprop[];
+}
+
+export interface ServicesSectionProps extends Base<"blocks.services-section"> {
+  heading: string;
+  theme?: Theme;
+  features: FeatureCardProps[];
+  floatingIcon?: floatingIconProps;
+  link?: LinkProps;
 }

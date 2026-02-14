@@ -445,10 +445,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       [
         'blocks.trust-badges-section',
         'blocks.hero-section',
-        'blocks.benefits-block',
         'blocks.navigation-section',
         'blocks.features-section',
         'blocks.stats-section',
+        'blocks.services-section',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

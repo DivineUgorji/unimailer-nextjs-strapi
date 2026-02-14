@@ -58,6 +58,26 @@ const homePageQuery = qs.stringify({
             stats: { fields: ["value", "description"] },
           },
         },
+
+        "blocks.services-section": {
+          populate: {
+            theme: true,
+            features: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+            floatingIcon: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+          },
+        },
       },
     },
   },

@@ -22,10 +22,10 @@
       "components": [
         "blocks.trust-badges-section",
         "blocks.hero-section",
-        "blocks.benefits-block",
         "blocks.navigation-section",
         "blocks.features-section",
-        "blocks.stats-section"
+        "blocks.stats-section",
+        "blocks.services-section"
       ]
     }
   }

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_elements_floating_icons",
+  "info": {
+    "displayName": "floatingIcon"
+  },
+  "options": {},
+  "attributes": {
+    "showIcon": {
+      "type": "boolean",
+      "default": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

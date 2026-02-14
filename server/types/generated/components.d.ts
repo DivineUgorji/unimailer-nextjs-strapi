@@ -1,25 +1,5 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface BlocksBenefitsBlock extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_benefits_blocks';
-  info: {
-    displayName: 'Benefits section';
-  };
-  attributes: {
-    descriptionOne: Schema.Attribute.Text;
-    descriptionThree: Schema.Attribute.Text;
-    descriptionTwo: Schema.Attribute.Text;
-    heading: Schema.Attribute.String;
-    imageOne: Schema.Attribute.Media<'images'>;
-    imageThree: Schema.Attribute.Media<'images'>;
-    imageTwo: Schema.Attribute.Media<'images'>;
-    subheadingOne: Schema.Attribute.String;
-    subheadingThree: Schema.Attribute.String;
-    subheadingTwo: Schema.Attribute.String;
-    theme: Schema.Attribute.Component<'elements.theme', false>;
-  };
-}
-
 export interface BlocksFeaturesSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_features_sections';
   info: {
@@ -55,6 +35,19 @@ export interface BlocksNavigationSection extends Struct.ComponentSchema {
     links: Schema.Attribute.Component<'elements.link', true>;
     logo: Schema.Attribute.Component<'elements.logo', false>;
     navCta: Schema.Attribute.Component<'elements.button', false>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
+export interface BlocksServicesSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_services_sections';
+  info: {
+    displayName: 'services section';
+  };
+  attributes: {
+    features: Schema.Attribute.Component<'elements.feature-card', true>;
+    floatingIcon: Schema.Attribute.Component<'elements.floating-icon', false>;
+    heading: Schema.Attribute.String;
     theme: Schema.Attribute.Component<'elements.theme', false>;
   };
 }
@@ -105,7 +98,19 @@ export interface ElementsFeatureCard extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.Component<'elements.link', false>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface ElementsFloatingIcon extends Struct.ComponentSchema {
+  collectionName: 'components_elements_floating_icons';
+  info: {
+    displayName: 'floatingIcon';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    showIcon: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
   };
 }
 
@@ -156,14 +161,15 @@ export interface ElementsTheme extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'blocks.benefits-block': BlocksBenefitsBlock;
       'blocks.features-section': BlocksFeaturesSection;
       'blocks.hero-section': BlocksHeroSection;
       'blocks.navigation-section': BlocksNavigationSection;
+      'blocks.services-section': BlocksServicesSection;
       'blocks.stats-section': BlocksStatsSection;
       'blocks.trust-badges-section': BlocksTrustBadgesSection;
       'elements.button': ElementsButton;
       'elements.feature-card': ElementsFeatureCard;
+      'elements.floating-icon': ElementsFloatingIcon;
       'elements.link': ElementsLink;
       'elements.logo': ElementsLogo;
       'elements.stats': ElementsStats;

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_blocks_services_sections",
+  "info": {
+    "displayName": "services section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.feature-card",
+      "repeatable": true
+    },
+    "floatingIcon": {
+      "type": "component",
+      "component": "elements.floating-icon",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

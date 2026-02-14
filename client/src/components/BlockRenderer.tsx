@@ -5,6 +5,7 @@ import { NavigationSection } from "@/components/blocks/NavigationSection";
 import { TrustBadgesSection } from "@/components/blocks/TrustBadgesSection";
 import { FeaturesSection } from "./blocks/FeaturesSection";
 import { StatsSection } from "./blocks/StatsSection";
+import { ServicesSection } from "./blocks/ServicesSection";
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -18,6 +19,8 @@ function blockRenderer(block: Block, index: number) {
       return <FeaturesSection {...block} key={index} />;
     case "blocks.stats-section":
       return <StatsSection {...block} key={index} />;
+    case "blocks.services-section":
+      return <ServicesSection {...block} key={index} />;
     default:
       return null;
   }

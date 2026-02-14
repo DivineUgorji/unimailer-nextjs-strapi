@@ -17,6 +17,11 @@
     },
     "description": {
       "type": "text"
+    },
+    "link": {
+      "type": "component",
+      "component": "elements.link",
+      "repeatable": false
     }
   },
   "config": {}
