@@ -28,7 +28,9 @@ export function NavigationSection({
         )}
 
         {/* Links */}
-        <ul className={`${themeClasses.text} flex items-center gap-8`}>
+        <ul
+          className={`${themeClasses.text} hidden md:flex items-center gap-8`}
+        >
           {links?.map((link) => (
             <li key={link.id}>
               <a

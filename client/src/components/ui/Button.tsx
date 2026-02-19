@@ -5,18 +5,13 @@ const BUTTON_VARIANTS = {
   orange: "bg-accent-400 text-neutral-400 hover:bg-orange-600",
 };
 
-export function Button({
-  text,
-  href,
-  backgroundColor,
-  isExternal,
-}: ButtonProps) {
+export function Button({ text, href, variant, isExternal }: ButtonProps) {
   return (
     <a
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className={`inline-flex items-center px-5 py-2.5 rounded-md font-medium transition ${BUTTON_VARIANTS[backgroundColor]}`}
+      className={`inline-flex items-center px-5 py-2.5 rounded-md font-medium transition ${BUTTON_VARIANTS[variant]}`}
     >
       {text}
     </a>

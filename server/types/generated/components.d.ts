@@ -26,6 +26,20 @@ export interface BlocksHeroSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksInvestmentSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_investment_sections';
+  info: {
+    displayName: 'Investment section';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    investmentCta: Schema.Attribute.Component<'elements.button', false>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksNavigationSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_navigation_sections';
   info: {
@@ -35,6 +49,18 @@ export interface BlocksNavigationSection extends Struct.ComponentSchema {
     links: Schema.Attribute.Component<'elements.link', true>;
     logo: Schema.Attribute.Component<'elements.logo', false>;
     navCta: Schema.Attribute.Component<'elements.button', false>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
+export interface BlocksProcessSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_process_sections';
+  info: {
+    displayName: 'Process section';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    steps: Schema.Attribute.Component<'elements.stats', true>;
     theme: Schema.Attribute.Component<'elements.theme', false>;
   };
 }
@@ -66,6 +92,19 @@ export interface BlocksStatsSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksTeamSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_team_sections';
+  info: {
+    displayName: 'Team section';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    teamCard: Schema.Attribute.Component<'elements.feature-card', true>;
+    teamSectionCta: Schema.Attribute.Component<'elements.button', false>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksTrustBadgesSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_trust_badges_sections';
   info: {
@@ -83,10 +122,10 @@ export interface ElementsButton extends Struct.ComponentSchema {
     displayName: 'Button';
   };
   attributes: {
-    backgroundColor: Schema.Attribute.Enumeration<['black', 'orange']>;
     href: Schema.Attribute.String;
     isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     text: Schema.Attribute.String;
+    variant: Schema.Attribute.Enumeration<['black', 'orange']>;
   };
 }
 
@@ -139,11 +178,12 @@ export interface ElementsLogo extends Struct.ComponentSchema {
 export interface ElementsStats extends Struct.ComponentSchema {
   collectionName: 'components_elements_stats';
   info: {
-    displayName: 'stats';
+    displayName: 'subTextBlock';
   };
   attributes: {
     description: Schema.Attribute.String;
-    value: Schema.Attribute.String;
+    stepCount: Schema.Attribute.Integer;
+    subheading: Schema.Attribute.String;
   };
 }
 
@@ -163,9 +203,12 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.features-section': BlocksFeaturesSection;
       'blocks.hero-section': BlocksHeroSection;
+      'blocks.investment-section': BlocksInvestmentSection;
       'blocks.navigation-section': BlocksNavigationSection;
+      'blocks.process-section': BlocksProcessSection;
       'blocks.services-section': BlocksServicesSection;
       'blocks.stats-section': BlocksStatsSection;
+      'blocks.team-section': BlocksTeamSection;
       'blocks.trust-badges-section': BlocksTrustBadgesSection;
       'elements.button': ElementsButton;
       'elements.feature-card': ElementsFeatureCard;

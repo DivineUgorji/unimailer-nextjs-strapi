@@ -1,11 +1,14 @@
 {
   "collectionName": "components_elements_stats",
   "info": {
-    "displayName": "stats"
+    "displayName": "subTextBlock"
   },
   "options": {},
   "attributes": {
-    "value": {
+    "stepCount": {
+      "type": "integer"
+    },
+    "subheading": {
       "type": "string"
     },
     "description": {

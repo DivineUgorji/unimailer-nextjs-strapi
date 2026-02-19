@@ -6,6 +6,9 @@ import { TrustBadgesSection } from "@/components/blocks/TrustBadgesSection";
 import { FeaturesSection } from "./blocks/FeaturesSection";
 import { StatsSection } from "./blocks/StatsSection";
 import { ServicesSection } from "./blocks/ServicesSection";
+import { InvestmentSection } from "./blocks/InvestmentSection";
+import { ProcessSection } from "@/components/blocks/ProcessSection";
+import { TeamSection } from "./blocks/TeamSection";
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -21,6 +24,12 @@ function blockRenderer(block: Block, index: number) {
       return <StatsSection {...block} key={index} />;
     case "blocks.services-section":
       return <ServicesSection {...block} key={index} />;
+    case "blocks.investment-section":
+      return <InvestmentSection {...block} key={index} />;
+    case "blocks.process-section":
+      return <ProcessSection {...block} key={index} />;
+    case "blocks.team-section":
+      return <TeamSection {...block} key={index} />;
     default:
       return null;
   }

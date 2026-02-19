@@ -55,7 +55,7 @@ const homePageQuery = qs.stringify({
             image: {
               fields: ["url", "alternativeText"],
             },
-            stats: { fields: ["value", "description"] },
+            stats: { fields: ["subheading", "description"] },
           },
         },
 
@@ -67,6 +67,7 @@ const homePageQuery = qs.stringify({
                 image: {
                   fields: ["url", "alternativeText"],
                 },
+                link: true,
               },
             },
             floatingIcon: {
@@ -76,6 +77,39 @@ const homePageQuery = qs.stringify({
                 },
               },
             },
+          },
+        },
+
+        "blocks.investment-section": {
+          populate: {
+            theme: true,
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+            investmentCta: true,
+          },
+        },
+
+        "blocks.process-section": {
+          populate: {
+            theme: true,
+            steps: {
+              fields: ["stepCount", "subheading", "description"],
+            },
+          },
+        },
+
+        "blocks.team-section": {
+          populate: {
+            theme: true,
+            teamCard: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+            teamSectionCta: true,
           },
         },
       },

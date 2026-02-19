@@ -10,7 +10,7 @@ export function TrustBadgesSection({
   return (
     // <section className="bg-neutral-50">
     <section className={`${themeClasses.background} ${themeClasses.text}`}>
-      <div className="container px-4 sm:psx-8 lg:px-33 py-14 sm:py-24">
+      <div className="container px-4 sm:psx-8 lg:px-33 py-12 sm:py-18">
         <ul className="flex gap-10 justify-center">
           {images.map((image) => (
             <li key={image.id}>

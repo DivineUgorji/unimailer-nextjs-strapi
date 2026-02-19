@@ -18,7 +18,7 @@ export interface LogoProps {
 }
 
 export interface ButtonProps extends LinkProps {
-  backgroundColor: "black" | "orange";
+  variant: "black" | "orange";
 }
 
 export interface Theme {
@@ -31,12 +31,14 @@ export interface FeatureCardProps {
   title: string;
   description: string;
   image: ImageProps;
+  link?: LinkProps;
 }
 
-export interface statsprop {
+export interface subTextBlockprop {
   id: number;
-  value: string;
+  subheading: string;
   description: string;
+  stepCount?: number;
 }
 
 export interface floatingIconProps {
@@ -51,7 +53,10 @@ type ComponentType =
   | "blocks.navigation-section"
   | "blocks.features-section"
   | "blocks.stats-section"
-  | "blocks.services-section";
+  | "blocks.services-section"
+  | "blocks.investment-section"
+  | "blocks.process-section"
+  | "blocks.team-section";
 
 interface Base<
   T extends ComponentType,
@@ -72,7 +77,10 @@ export type Block =
   | NavigationSectionProps
   | FeaturesSectionProps
   | StatsSectionProps
-  | ServicesSectionProps;
+  | ServicesSectionProps
+  | InvestmentSectionProps
+  | ProcessSectionProps
+  | TeamSectionProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -104,7 +112,7 @@ export interface StatsSectionProps extends Base<"blocks.stats-section"> {
   description: string;
   theme?: Theme;
   image: ImageProps;
-  stats: statsprop[];
+  stats: subTextBlockprop[];
 }
 
 export interface ServicesSectionProps extends Base<"blocks.services-section"> {
@@ -112,5 +120,24 @@ export interface ServicesSectionProps extends Base<"blocks.services-section"> {
   theme?: Theme;
   features: FeatureCardProps[];
   floatingIcon?: floatingIconProps;
-  link?: LinkProps;
+}
+
+export interface InvestmentSectionProps extends Base<"blocks.investment-section"> {
+  heading: string;
+  description: string;
+  theme?: Theme;
+  image: ImageProps;
+  investmentCta: ButtonProps;
+}
+
+export interface ProcessSectionProps extends Base<"blocks.process-section"> {
+  heading: string;
+  theme?: Theme;
+  steps: subTextBlockprop[];
+}
+export interface TeamSectionProps extends Base<"blocks.team-section"> {
+  heading: string;
+  theme?: Theme;
+  teamCard?: FeatureCardProps[];
+  teamSectionCta?: ButtonProps;
 }

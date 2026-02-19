@@ -25,7 +25,10 @@
         "blocks.navigation-section",
         "blocks.features-section",
         "blocks.stats-section",
-        "blocks.services-section"
+        "blocks.services-section",
+        "blocks.investment-section",
+        "blocks.process-section",
+        "blocks.team-section"
       ]
     }
   }

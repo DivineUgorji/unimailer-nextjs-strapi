@@ -8,15 +8,16 @@ export function ServicesSection({
   heading,
   features,
   floatingIcon,
-  link,
 }: Readonly<ServicesSectionProps>) {
   const themeClasses = getThemeClasses(theme?.variant);
   return (
     <section
-      className={`${themeClasses.background} ${themeClasses.text}  relative`}
+      className={`${themeClasses.background} ${themeClasses.text}  relative overflow-hidden`}
     >
-      <div className="container mx-auto px-4 sm:px-8 lg:px-33 py-6">
-        <h2 className="text-center mb-12">{heading}</h2>
+      <div className="container mx-auto px-4 sm:px-8 lg:px-33 py-12 md:py-18">
+        <h2 className="text-left md:text-center md:max-w-[24ch] mx-auto mb-12 text-neutral-400">
+          {heading}
+        </h2>
         <ul className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8 items-stretch">
           {features.map((feature) => (
             <li key={feature.id} className="flex flex-col h-full">
@@ -37,25 +38,27 @@ export function ServicesSection({
                 )}
                 <h3 className="text-xl">{feature.title}</h3>
               </div>
-              <p className="text-neutral-200">{feature.description}</p>
+              <p className="text-neutral-300">{feature.description}</p>
               <a
-                href={link?.href || "#"}
+                href={feature.link?.href || "#"}
                 className="mt-auto pt-4 flex items-center gap-1 text-neutral-400 hover:text-accent-400 hover:underline"
               >
-                <span>{link?.text || "Learn more"}</span>
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1 " />
+                <span className="font-semibold leading-[1.65] text-base">
+                  {feature.link?.text || "Learn more"}
+                </span>
+                <ArrowRight className="w-5 h-5 text-neutral-400" />
               </a>
             </li>
           ))}
         </ul>
-        <div className="absolute">
+        <div className="absolute z-10 top-0 right-0 pointer-events-none">
           {floatingIcon?.showIcon && floatingIcon.image && (
             <StrapiImage
               src={floatingIcon.image.url}
               alt={floatingIcon.image.alternativeText || "Floating Icon"}
               width={32}
               height={32}
-              className="absolute bottom-4 right-4 w-16 h-16 object-cover rounded-full shadow-lg"
+              className="opacity-20 w-48 h-48 object-contain"
             />
           )}
         </div>

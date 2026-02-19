@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_blocks_investment_sections",
+  "info": {
+    "displayName": "Investment section"
+  },
+  "options": {},
+  "attributes": {
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "investmentCta": {
+      "type": "component",
+      "component": "elements.button",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

@@ -15,7 +15,7 @@
       "type": "boolean",
       "default": false
     },
-    "backgroundColor": {
+    "variant": {
       "type": "enumeration",
       "enum": [
         "black",
