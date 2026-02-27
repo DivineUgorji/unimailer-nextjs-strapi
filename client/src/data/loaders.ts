@@ -112,6 +112,19 @@ const homePageQuery = qs.stringify({
             teamSectionCta: true,
           },
         },
+
+        "blocks.pricing-section": {
+          populate: {
+            theme: true,
+            plans: {
+              populate: {
+                pricingCta: true,
+                features: true,
+                themeVariant: true,
+              },
+            },
+          },
+        },
       },
     },
   },

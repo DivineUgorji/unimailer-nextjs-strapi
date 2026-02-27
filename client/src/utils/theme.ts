@@ -7,6 +7,7 @@ export interface ThemeConfig {
   text: string;
   accent: string;
   border?: string;
+  divider?: string;
 }
 
 export const themeMap: Record<ThemeVariant, ThemeConfig> = {
@@ -21,12 +22,14 @@ export const themeMap: Record<ThemeVariant, ThemeConfig> = {
     text: "text-neutral-900",
     accent: "bg-orange-500",
     border: "border-neutral-200",
+    divider: "bg-neutral-800/15",
   },
 
   black: {
     background: "bg-neutral-900",
     text: "text-neutral-100",
     accent: "bg-orange-500",
+    divider: "bg-neutral-400/15",
   },
 };
 

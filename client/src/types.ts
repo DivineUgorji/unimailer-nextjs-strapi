@@ -19,6 +19,8 @@ export interface LogoProps {
 
 export interface ButtonProps extends LinkProps {
   variant: "black" | "orange";
+  className?: string;
+  children?: React.ReactNode;
 }
 
 export interface Theme {
@@ -41,10 +43,29 @@ export interface subTextBlockprop {
   stepCount?: number;
 }
 
-export interface floatingIconProps {
+export interface FloatingIconProps {
   id: number;
   showIcon: boolean;
   image: ImageProps;
+}
+
+export interface Feature {
+  id: number;
+  feature: string;
+}
+
+export interface PricingPlanProps {
+  id: number;
+  planName: string;
+  currencySymbol: string;
+  price: number;
+  billingPeriod: string;
+  note: string;
+  features: Feature[];
+  pricingCta?: ButtonProps;
+  themeVariant?: Theme;
+  // themeVariant?: Theme["variant"];
+  isHighlighted: boolean;
 }
 
 type ComponentType =
@@ -56,7 +77,8 @@ type ComponentType =
   | "blocks.services-section"
   | "blocks.investment-section"
   | "blocks.process-section"
-  | "blocks.team-section";
+  | "blocks.team-section"
+  | "blocks.pricing-section";
 
 interface Base<
   T extends ComponentType,
@@ -80,7 +102,8 @@ export type Block =
   | ServicesSectionProps
   | InvestmentSectionProps
   | ProcessSectionProps
-  | TeamSectionProps;
+  | TeamSectionProps
+  | PricingSectionProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -119,7 +142,7 @@ export interface ServicesSectionProps extends Base<"blocks.services-section"> {
   heading: string;
   theme?: Theme;
   features: FeatureCardProps[];
-  floatingIcon?: floatingIconProps;
+  floatingIcon?: FloatingIconProps;
 }
 
 export interface InvestmentSectionProps extends Base<"blocks.investment-section"> {
@@ -140,4 +163,9 @@ export interface TeamSectionProps extends Base<"blocks.team-section"> {
   theme?: Theme;
   teamCard?: FeatureCardProps[];
   teamSectionCta?: ButtonProps;
+}
+export interface PricingSectionProps extends Base<"blocks.pricing-section"> {
+  heading: string;
+  theme?: Theme;
+  plans: PricingPlanProps[];
 }

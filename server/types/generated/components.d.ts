@@ -53,6 +53,18 @@ export interface BlocksNavigationSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksPricingSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_pricing_sections';
+  info: {
+    displayName: 'Pricing section';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    plans: Schema.Attribute.Component<'elements.plans', true>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksProcessSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_process_sections';
   info: {
@@ -175,6 +187,52 @@ export interface ElementsLogo extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsPlans extends Struct.ComponentSchema {
+  collectionName: 'components_elements_plans';
+  info: {
+    displayName: 'plans';
+  };
+  attributes: {
+    billingPeriod: Schema.Attribute.String;
+    currencySymbol: Schema.Attribute.String;
+    features: Schema.Attribute.Component<'elements.pricing-feature', true>;
+    isHighlighted: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    note: Schema.Attribute.String;
+    planName: Schema.Attribute.String;
+    price: Schema.Attribute.Integer;
+    pricingCta: Schema.Attribute.Component<'elements.button', false>;
+    themeVariant: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
+export interface ElementsPricingFeature extends Struct.ComponentSchema {
+  collectionName: 'components_elements_pricing_features';
+  info: {
+    displayName: 'pricingFeature';
+  };
+  attributes: {
+    feature: Schema.Attribute.String;
+  };
+}
+
+export interface ElementsPricingPlans extends Struct.ComponentSchema {
+  collectionName: 'components_elements_pricing_plans';
+  info: {
+    displayName: 'pricingPlan';
+  };
+  attributes: {
+    billingPeriod: Schema.Attribute.String;
+    currencySymbol: Schema.Attribute.String;
+    features: Schema.Attribute.Component<'elements.pricing-feature', true>;
+    isHighlighted: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    note: Schema.Attribute.String;
+    planName: Schema.Attribute.String;
+    price: Schema.Attribute.Integer;
+    pricingCta: Schema.Attribute.Component<'elements.button', false>;
+    themeVariant: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface ElementsStats extends Struct.ComponentSchema {
   collectionName: 'components_elements_stats';
   info: {
@@ -205,6 +263,7 @@ declare module '@strapi/strapi' {
       'blocks.hero-section': BlocksHeroSection;
       'blocks.investment-section': BlocksInvestmentSection;
       'blocks.navigation-section': BlocksNavigationSection;
+      'blocks.pricing-section': BlocksPricingSection;
       'blocks.process-section': BlocksProcessSection;
       'blocks.services-section': BlocksServicesSection;
       'blocks.stats-section': BlocksStatsSection;
@@ -215,6 +274,9 @@ declare module '@strapi/strapi' {
       'elements.floating-icon': ElementsFloatingIcon;
       'elements.link': ElementsLink;
       'elements.logo': ElementsLogo;
+      'elements.plans': ElementsPlans;
+      'elements.pricing-feature': ElementsPricingFeature;
+      'elements.pricing-plans': ElementsPricingPlans;
       'elements.stats': ElementsStats;
       'elements.theme': ElementsTheme;
     }

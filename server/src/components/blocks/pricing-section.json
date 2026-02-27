@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_pricing_sections",
+  "info": {
+    "displayName": "Pricing section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
+    "plans": {
+      "type": "component",
+      "component": "elements.plans",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

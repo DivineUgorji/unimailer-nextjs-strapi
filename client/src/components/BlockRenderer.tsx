@@ -9,6 +9,7 @@ import { ServicesSection } from "./blocks/ServicesSection";
 import { InvestmentSection } from "./blocks/InvestmentSection";
 import { ProcessSection } from "@/components/blocks/ProcessSection";
 import { TeamSection } from "./blocks/TeamSection";
+import { PricingSection } from "./blocks/PricingSection";
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -30,6 +31,8 @@ function blockRenderer(block: Block, index: number) {
       return <ProcessSection {...block} key={index} />;
     case "blocks.team-section":
       return <TeamSection {...block} key={index} />;
+    case "blocks.pricing-section":
+      return <PricingSection {...block} key={index} />;
     default:
       return null;
   }
