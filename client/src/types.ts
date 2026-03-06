@@ -68,6 +68,19 @@ export interface PricingPlanProps {
   isHighlighted: boolean;
 }
 
+export interface ScrollingCardsProps {
+  id: number;
+  images: ImageProps[];
+  direction: "left" | "right";
+  speed: number;
+}
+
+// export interface ScrollingRowProps = {
+//   images: ImageProps[];
+//   direction?: "left" | "right";
+//   speed?: number;
+// }
+
 type ComponentType =
   | "blocks.hero-section"
   | "blocks.trust-badges-section"
@@ -78,7 +91,8 @@ type ComponentType =
   | "blocks.investment-section"
   | "blocks.process-section"
   | "blocks.team-section"
-  | "blocks.pricing-section";
+  | "blocks.pricing-section"
+  | "blocks.showcase-section";
 
 interface Base<
   T extends ComponentType,
@@ -103,7 +117,8 @@ export type Block =
   | InvestmentSectionProps
   | ProcessSectionProps
   | TeamSectionProps
-  | PricingSectionProps;
+  | PricingSectionProps
+  | ShowcaseSectionProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -120,6 +135,7 @@ export interface HeroSectionProps extends Base<"blocks.hero-section"> {
 }
 
 export interface TrustedBadgesSectionProps extends Base<"blocks.trust-badges-section"> {
+  heading: string;
   theme?: Theme;
   images: ImageProps[];
 }
@@ -168,4 +184,10 @@ export interface PricingSectionProps extends Base<"blocks.pricing-section"> {
   heading: string;
   theme?: Theme;
   plans: PricingPlanProps[];
+}
+export interface ShowcaseSectionProps extends Base<"blocks.showcase-section"> {
+  heading: string;
+  image: ImageProps;
+  theme?: Theme;
+  scrollingCards: ScrollingCardsProps[];
 }

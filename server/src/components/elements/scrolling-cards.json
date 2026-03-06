@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_elements_scrolling_cards",
+  "info": {
+    "displayName": "scrollingCards"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "direction": {
+      "type": "enumeration",
+      "default": "right",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "speed": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

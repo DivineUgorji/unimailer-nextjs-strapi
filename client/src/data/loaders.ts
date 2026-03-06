@@ -125,6 +125,22 @@ const homePageQuery = qs.stringify({
             },
           },
         },
+
+        "blocks.showcase-section": {
+          populate: {
+            theme: true,
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+            scrollingCards: {
+              populate: {
+                images: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+          },
+        },
       },
     },
   },

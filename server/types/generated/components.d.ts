@@ -90,6 +90,22 @@ export interface BlocksServicesSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksShowcaseSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_showcase_sections';
+  info: {
+    displayName: 'Showcase section';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    scrollingCards: Schema.Attribute.Component<
+      'elements.scrolling-cards',
+      true
+    >;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksStatsSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_stats_sections';
   info: {
@@ -117,12 +133,30 @@ export interface BlocksTeamSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksTestimonialsSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_testimonials_sections';
+  info: {
+    displayName: 'Testimonials section';
+  };
+  attributes: {
+    floatingIcon: Schema.Attribute.Component<'elements.floating-icon', false>;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    name: Schema.Attribute.String;
+    role: Schema.Attribute.String;
+    testimonial: Schema.Attribute.Text;
+    TestimonialCta: Schema.Attribute.Component<'elements.button', false>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksTrustBadgesSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_trust_badges_sections';
   info: {
     displayName: 'Trust badges section';
   };
   attributes: {
+    heading: Schema.Attribute.String;
     images: Schema.Attribute.Media<'images', true>;
     theme: Schema.Attribute.Component<'elements.theme', false>;
   };
@@ -233,6 +267,19 @@ export interface ElementsPricingPlans extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsScrollingCards extends Struct.ComponentSchema {
+  collectionName: 'components_elements_scrolling_cards';
+  info: {
+    displayName: 'scrollingCards';
+  };
+  attributes: {
+    direction: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.DefaultTo<'right'>;
+    images: Schema.Attribute.Media<'images', true>;
+    speed: Schema.Attribute.Integer;
+  };
+}
+
 export interface ElementsStats extends Struct.ComponentSchema {
   collectionName: 'components_elements_stats';
   info: {
@@ -266,8 +313,10 @@ declare module '@strapi/strapi' {
       'blocks.pricing-section': BlocksPricingSection;
       'blocks.process-section': BlocksProcessSection;
       'blocks.services-section': BlocksServicesSection;
+      'blocks.showcase-section': BlocksShowcaseSection;
       'blocks.stats-section': BlocksStatsSection;
       'blocks.team-section': BlocksTeamSection;
+      'blocks.testimonials-section': BlocksTestimonialsSection;
       'blocks.trust-badges-section': BlocksTrustBadgesSection;
       'elements.button': ElementsButton;
       'elements.feature-card': ElementsFeatureCard;
@@ -277,6 +326,7 @@ declare module '@strapi/strapi' {
       'elements.plans': ElementsPlans;
       'elements.pricing-feature': ElementsPricingFeature;
       'elements.pricing-plans': ElementsPricingPlans;
+      'elements.scrolling-cards': ElementsScrollingCards;
       'elements.stats': ElementsStats;
       'elements.theme': ElementsTheme;
     }

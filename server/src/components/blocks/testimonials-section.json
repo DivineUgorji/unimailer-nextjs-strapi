@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_blocks_testimonials_sections",
+  "info": {
+    "displayName": "Testimonials section"
+  },
+  "options": {},
+  "attributes": {
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
+    "heading": {
+      "type": "string"
+    },
+    "testimonial": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "TestimonialCta": {
+      "type": "component",
+      "component": "elements.button",
+      "repeatable": false
+    },
+    "floatingIcon": {
+      "type": "component",
+      "component": "elements.floating-icon",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

@@ -1,13 +1,16 @@
-import Image from "next/image";
-// import { getStrapiURL } from "@/utils/get-strapi-url";
+import Image, { ImageProps } from "next/image";
 import { getStrapiURL } from "@/utils/get-strapi-url";
 
-interface StrapiImageProps {
+interface StrapiImageProps extends Omit<ImageProps, "src"> {
   src: string;
-  alt: string;
-  className?: string;
-  [key: string]: string | number | boolean | undefined | object;
 }
+
+// interface StrapiImageProps {
+//   src: string;
+//   alt: string;
+//   className?: string;
+//   [key: string]: string | number | boolean | undefined | object;
+// }
 
 export function StrapiImage({
   src,
