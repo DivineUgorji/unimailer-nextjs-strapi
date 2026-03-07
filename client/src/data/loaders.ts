@@ -141,6 +141,23 @@ const homePageQuery = qs.stringify({
             },
           },
         },
+
+        "blocks.testimonials-section": {
+          populate: {
+            theme: true,
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+            floatingIcon: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+            TestimonialCta: true,
+          },
+        },
       },
     },
   },

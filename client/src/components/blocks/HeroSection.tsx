@@ -13,7 +13,7 @@ export function HeroSection({
     // <section className="bg-neutral-500">
     <section className={`${themeClasses.background} ${themeClasses.text}`}>
       <div className="container px-4 sm:px-8 lg:px-33 py-14 sm:py-18">
-        <div className="grid grid-cols-2 gap-5.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5.5">
           <div className="">
             <h1 className="text-neutral-950">{heading}</h1>
             <p className="text-neutral-800 mt-4">{description}</p>

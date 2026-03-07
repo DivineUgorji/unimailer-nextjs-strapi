@@ -92,7 +92,8 @@ type ComponentType =
   | "blocks.process-section"
   | "blocks.team-section"
   | "blocks.pricing-section"
-  | "blocks.showcase-section";
+  | "blocks.showcase-section"
+  | "blocks.testimonials-section";
 
 interface Base<
   T extends ComponentType,
@@ -118,7 +119,8 @@ export type Block =
   | ProcessSectionProps
   | TeamSectionProps
   | PricingSectionProps
-  | ShowcaseSectionProps;
+  | ShowcaseSectionProps
+  | TestimonialsSectionProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -190,4 +192,15 @@ export interface ShowcaseSectionProps extends Base<"blocks.showcase-section"> {
   image: ImageProps;
   theme?: Theme;
   scrollingCards: ScrollingCardsProps[];
+}
+
+export interface TestimonialsSectionProps extends Base<"blocks.testimonials-section"> {
+  theme?: Theme;
+  heading: string;
+  testimonial: string;
+  name: string;
+  role: string;
+  image: ImageProps;
+  TestimonialCta: ButtonProps;
+  floatingIcon?: FloatingIconProps;
 }

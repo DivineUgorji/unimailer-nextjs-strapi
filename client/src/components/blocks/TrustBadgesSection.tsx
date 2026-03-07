@@ -33,7 +33,7 @@ export function TrustBadgesSection({
             ))}
           </ul>
         </div>
-        <div className="mt-18 h-px w-full bg-[#35323E]/15" />
+        <div className="mt-18 h-px w-full bg-neutral-400/15" />
       </div>
     </section>
   );
