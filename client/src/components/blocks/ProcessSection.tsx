@@ -4,7 +4,7 @@ import type { ProcessSectionProps } from "@/types";
 export function ProcessSection({ heading, theme, steps }: ProcessSectionProps) {
   const themeClasses = getThemeClasses(theme?.variant);
   return (
-    <section className={`${themeClasses.background} ${themeClasses.text}`}>
+    <section className={`${themeClasses.background}`}>
       <div className="container px-4 md:px-8 lg:px-33 pb-14 md:pb-18">
         <h2 className="max-w-[25ch] mx-auto  mb-12 text-center">{heading}</h2>
         <ul className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -18,7 +18,7 @@ export function ProcessSection({ heading, theme, steps }: ProcessSectionProps) {
                 )}
               </div>
               <h4 className="mb-4">{step.subheading}</h4>
-              <p>{step.description}</p>
+              <p className="text-neutral-800/80">{step.description}</p>
             </li>
           ))}
         </ul>

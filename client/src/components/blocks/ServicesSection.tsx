@@ -36,12 +36,14 @@ export function ServicesSection({
                     }}
                   />
                 )}
-                <h3 className="text-xl">{feature.title}</h3>
+                <h3 className="text-neutral-400/90 text-base md:text-lg lg:text-xl">
+                  {feature.title}
+                </h3>
               </div>
-              <p className="text-neutral-300">{feature.description}</p>
+              <p className="text-neutral-300/80">{feature.description}</p>
               <a
                 href={feature.link?.href || "#"}
-                className="mt-auto pt-4 flex items-center gap-1 text-neutral-400 hover:text-accent-400 hover:underline"
+                className="mt-auto pt-4 flex items-center gap-1 text-neutral-400/90 hover:text-accent-400 hover:underline"
               >
                 <span className="font-semibold leading-[1.65] text-base">
                   {feature.link?.text || "Learn more"}

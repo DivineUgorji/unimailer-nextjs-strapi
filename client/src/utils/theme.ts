@@ -13,13 +13,13 @@ export interface ThemeConfig {
 export const themeMap: Record<ThemeVariant, ThemeConfig> = {
   orange: {
     background: "bg-neutral-500",
-    text: "text-neutral-900",
+    text: "text-neutral-800",
     accent: "bg-orange-500",
   },
 
   white: {
     background: "bg-neutral-100",
-    text: "text-neutral-900",
+    text: "text-neutral-800",
     accent: "bg-orange-500",
     border: "border-neutral-200",
     divider: "bg-neutral-800/15",
@@ -27,7 +27,7 @@ export const themeMap: Record<ThemeVariant, ThemeConfig> = {
 
   black: {
     background: "bg-neutral-900",
-    text: "text-neutral-100",
+    text: "text-neutral-300",
     accent: "bg-orange-500",
     divider: "bg-neutral-400/15",
   },

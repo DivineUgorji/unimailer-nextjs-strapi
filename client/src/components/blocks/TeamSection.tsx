@@ -11,7 +11,7 @@ export function TeamSection({
 }: Readonly<TeamSectionProps>) {
   const themeClasses = getThemeClasses(theme?.variant);
   return (
-    <section className={`${themeClasses.background} ${themeClasses.text}`}>
+    <section className={`${themeClasses.background} `}>
       <div className="container px-4 md:px-8 lg:px-33 py-12 md:py-14">
         <div className="flex items-center justify-between mb-12 gap-4">
           <h2 className="max-w-[26ch]">{heading}</h2>

@@ -17,7 +17,7 @@ export function InvestmentSection({
         <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-12 items-center">
           <div className="">
             <h2 className="mb-4">{heading}</h2>
-            <p className="text-lg mb-8">{description}</p>
+            <p className="text-neutral-800/80 text-lg mb-8">{description}</p>
             <Button {...investmentCta}>{investmentCta.text}</Button>
           </div>
 

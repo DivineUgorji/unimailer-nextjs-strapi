@@ -15,8 +15,8 @@ export function HeroSection({
       <div className="container px-4 sm:px-8 lg:px-33 py-14 sm:py-18">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5.5">
           <div className="">
-            <h1 className="text-neutral-950">{heading}</h1>
-            <p className="text-neutral-800 mt-4">{description}</p>
+            <h1 className="text-neutral-900">{heading}</h1>
+            <p className="text-neutral-800/80 mt-4">{description}</p>
           </div>
 
           <div className="">

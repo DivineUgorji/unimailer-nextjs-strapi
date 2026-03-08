@@ -11,7 +11,7 @@ export function TrustBadgesSection({
   return (
     // <section className="bg-neutral-50">
     <section className={`${themeClasses.background} ${themeClasses.text}`}>
-      <div className="container px-4 sm:psx-8 lg:px-33 py-12 sm:py-18">
+      <div className="container px-4 sm:psx-8 lg:px-33 pt-12 sm:pt-18">
         <h6 className="text-center">{heading}</h6>
         <div
           className="flex overflow-hidden mt-9 before:content-[''] 
@@ -33,7 +33,7 @@ export function TrustBadgesSection({
             ))}
           </ul>
         </div>
-        <div className="mt-18 h-px w-full bg-neutral-400/15" />
+        <div className="mt-18 h-px w-full bg-neutral-800/15" />
       </div>
     </section>
   );

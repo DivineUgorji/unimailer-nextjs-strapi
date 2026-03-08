@@ -16,9 +16,7 @@ export function TestimonialSection({
   const themeClasses = getThemeClasses(theme?.variant);
 
   return (
-    <section
-      className={`${themeClasses.background} ${themeClasses.text} relative`}
-    >
+    <section className={`${themeClasses.background} relative`}>
       <div className="container px-4 md:px-8 lg:px-33 pb-12 sm:pb-18">
         <div className="mb-18 h-px w-full bg-neutral-400/15" />
         <div className="absolute z-10 top-10 left-0 pointer-events-none">

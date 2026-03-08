@@ -30,14 +30,14 @@ export function StatsSection({
           </div>
           <div>
             <h2 className="text-neutral-900 mb-10 ">{heading}</h2>
-            <p>{description}</p>
+            <p className="text-neutral-800/80">{description}</p>
             <ul className="flex flex-col md:flex-row gap-10 mt-8">
               {stats.map((stat) => (
                 <li key={stat.id}>
                   <h4 className="font-semibold text-[38px] leading-tight text-accent-400">
                     {stat.subheading}
                   </h4>
-                  <p>{stat.description}</p>
+                  <p className="text-neutral-800/80">{stat.description}</p>
                 </li>
               ))}
             </ul>

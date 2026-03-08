@@ -10,7 +10,7 @@ export function FeaturesSection({
   const themeClasses = getThemeClasses(theme?.variant);
   return (
     <section className={`${themeClasses.background}`}>
-      <div className="container px-4 sm:px-8 lg:px-33 py-14 sm:py-18">
+      <div className="container px-4 sm:px-8 lg:px-33 y-14 md:py-18">
         <h2 className="text-neutral-900 max-w-[24ch] mx-auto text-center mb-10 ">
           {heading}
         </h2>
@@ -35,7 +35,7 @@ export function FeaturesSection({
                 }}
               />
               <h4 className="text-neutral-900 mt-4">{feature.title}</h4>
-              <p className="text-neutral-800 mt-2">{feature.description}</p>
+              <p className="text-neutral-800/80 mt-2">{feature.description}</p>
             </li>
           ))}
         </ul>

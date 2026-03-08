@@ -11,9 +11,7 @@ export function PricingSection({
   const sectionThemeClasses = getThemeClasses(theme?.variant);
 
   return (
-    <section
-      className={`${sectionThemeClasses.background} ${sectionThemeClasses.text}`}
-    >
+    <section className={`${sectionThemeClasses.background}`}>
       <div className="container px-4 md:px-8 lg:px-33 py-12 md:py-14">
         <h2 className="text-center max-w-[30ch] mx-auto mb-12">{heading}</h2>
 
@@ -48,7 +46,7 @@ export function PricingSection({
                   className={`mb-4 h-px w-full ${planThemeClasses.divider}`}
                 />
 
-                <ul className="mb-8 space-y-4">
+                <ul className={` mb-8 space-y-4`}>
                   {plan.features?.map((feature) => (
                     <li key={feature.id} className="flex items-center gap-2">
                       <Check />
