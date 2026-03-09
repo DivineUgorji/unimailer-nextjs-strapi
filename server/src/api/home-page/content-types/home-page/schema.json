@@ -31,7 +31,8 @@
         "blocks.team-section",
         "blocks.pricing-section",
         "blocks.showcase-section",
-        "blocks.testimonials-section"
+        "blocks.testimonials-section",
+        "blocks.scroll-banner-section"
       ]
     }
   }

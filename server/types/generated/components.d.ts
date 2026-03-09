@@ -77,6 +77,18 @@ export interface BlocksProcessSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksScrollBannerSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_scroll_banner_sections';
+  info: {
+    displayName: 'Scroll banner section';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'elements.highlight-items', true>;
+    speed: Schema.Attribute.Integer;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksServicesSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_services_sections';
   info: {
@@ -199,6 +211,18 @@ export interface ElementsFloatingIcon extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsHighlightItems extends Struct.ComponentSchema {
+  collectionName: 'components_elements_highlight_items';
+  info: {
+    displayName: 'highlightItems';
+    icon: 'chartPie';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    text: Schema.Attribute.String;
+  };
+}
+
 export interface ElementsLink extends Struct.ComponentSchema {
   collectionName: 'components_elements_links';
   info: {
@@ -312,6 +336,7 @@ declare module '@strapi/strapi' {
       'blocks.navigation-section': BlocksNavigationSection;
       'blocks.pricing-section': BlocksPricingSection;
       'blocks.process-section': BlocksProcessSection;
+      'blocks.scroll-banner-section': BlocksScrollBannerSection;
       'blocks.services-section': BlocksServicesSection;
       'blocks.showcase-section': BlocksShowcaseSection;
       'blocks.stats-section': BlocksStatsSection;
@@ -321,6 +346,7 @@ declare module '@strapi/strapi' {
       'elements.button': ElementsButton;
       'elements.feature-card': ElementsFeatureCard;
       'elements.floating-icon': ElementsFloatingIcon;
+      'elements.highlight-items': ElementsHighlightItems;
       'elements.link': ElementsLink;
       'elements.logo': ElementsLogo;
       'elements.plans': ElementsPlans;

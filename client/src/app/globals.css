@@ -97,6 +97,9 @@ html {
 }
 
 @theme inline {
+  --font-generalsans: "generalsans", system-ui, sans-serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -111,27 +114,30 @@ html {
   --color-accent-400: #ee6034;
 }
 
-@keyframes marquee {
-  from {
+/* @keyframes marquee {
+  0% {
     transform: translateX(0);
   }
-  to {
+  100% {
     transform: translateX(-50%);
   }
 }
 
-.marquee {
-  animation: marquee linear infinite;
+.marquee-track {
   will-change: transform;
-}
-
-.marquee-reverse {
-  animation-direction: reverse;
-}
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  animation: marquee var(--marquee-speed, 25s) linear infinite;
 } */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@utility marquee-track {
+  will-change: transform;
+  animation: marquee var(--marquee-speed, 25s) linear infinite;
+}

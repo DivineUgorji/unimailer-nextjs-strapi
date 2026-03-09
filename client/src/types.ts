@@ -75,6 +75,12 @@ export interface ScrollingCardsProps {
   speed: number;
 }
 
+export interface highlightItems {
+  id: number;
+  image: ImageProps;
+  text: string;
+}
+
 // export interface ScrollingRowProps = {
 //   images: ImageProps[];
 //   direction?: "left" | "right";
@@ -93,7 +99,8 @@ type ComponentType =
   | "blocks.team-section"
   | "blocks.pricing-section"
   | "blocks.showcase-section"
-  | "blocks.testimonials-section";
+  | "blocks.testimonials-section"
+  | "blocks.scroll-banner-section";
 
 interface Base<
   T extends ComponentType,
@@ -120,7 +127,8 @@ export type Block =
   | TeamSectionProps
   | PricingSectionProps
   | ShowcaseSectionProps
-  | TestimonialsSectionProps;
+  | TestimonialsSectionProps
+  | ScrollBannerSectionProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -203,4 +211,10 @@ export interface TestimonialsSectionProps extends Base<"blocks.testimonials-sect
   image: ImageProps;
   TestimonialCta: ButtonProps;
   floatingIcon?: FloatingIconProps;
+}
+
+export interface ScrollBannerSectionProps extends Base<"blocks.scroll-banner-section"> {
+  theme?: Theme;
+  speed?: number;
+  items: highlightItems[];
 }

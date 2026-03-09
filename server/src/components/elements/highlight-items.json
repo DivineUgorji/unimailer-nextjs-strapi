@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_elements_highlight_items",
+  "info": {
+    "displayName": "highlightItems",
+    "icon": "chartPie"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "text": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

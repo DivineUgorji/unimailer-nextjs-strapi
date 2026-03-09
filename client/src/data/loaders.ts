@@ -158,6 +158,19 @@ const homePageQuery = qs.stringify({
             TestimonialCta: true,
           },
         },
+
+        "blocks.scroll-banner-section": {
+          populate: {
+            theme: true,
+            items: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+          },
+        },
       },
     },
   },

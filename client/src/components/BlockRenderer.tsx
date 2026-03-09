@@ -12,6 +12,7 @@ import { TeamSection } from "./blocks/TeamSection";
 import { PricingSection } from "./blocks/PricingSection";
 import { ShowcaseSection } from "./blocks/ShowcaseSection";
 import { TestimonialSection } from "./blocks/TestimonialSection";
+import { ScrollBannerSection } from "./blocks/ScrollBannerSection";
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -39,6 +40,8 @@ function blockRenderer(block: Block, index: number) {
       return <ShowcaseSection {...block} key={index} />;
     case "blocks.testimonials-section":
       return <TestimonialSection {...block} key={index} />;
+    case "blocks.scroll-banner-section":
+      return <ScrollBannerSection {...block} key={index} />;
     default:
       return null;
   }
