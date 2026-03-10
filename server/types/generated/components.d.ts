@@ -1,5 +1,19 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksContentGridSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_content_grid_sections';
+  info: {
+    displayName: 'Content grid section';
+  };
+  attributes: {
+    content: Schema.Attribute.Component<'elements.content-post', true>;
+    contentCta: Schema.Attribute.Component<'elements.button', false>;
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksFeaturesSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_features_sections';
   info: {
@@ -187,6 +201,19 @@ export interface ElementsButton extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsContentPost extends Struct.ComponentSchema {
+  collectionName: 'components_elements_content_posts';
+  info: {
+    displayName: 'content post';
+  };
+  attributes: {
+    excerpt: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.Component<'elements.link', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ElementsFeatureCard extends Struct.ComponentSchema {
   collectionName: 'components_elements_feature_cards';
   info: {
@@ -330,6 +357,7 @@ export interface ElementsTheme extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.content-grid-section': BlocksContentGridSection;
       'blocks.features-section': BlocksFeaturesSection;
       'blocks.hero-section': BlocksHeroSection;
       'blocks.investment-section': BlocksInvestmentSection;
@@ -344,6 +372,7 @@ declare module '@strapi/strapi' {
       'blocks.testimonials-section': BlocksTestimonialsSection;
       'blocks.trust-badges-section': BlocksTrustBadgesSection;
       'elements.button': ElementsButton;
+      'elements.content-post': ElementsContentPost;
       'elements.feature-card': ElementsFeatureCard;
       'elements.floating-icon': ElementsFloatingIcon;
       'elements.highlight-items': ElementsHighlightItems;

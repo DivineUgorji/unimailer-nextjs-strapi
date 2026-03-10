@@ -171,6 +171,20 @@ const homePageQuery = qs.stringify({
             },
           },
         },
+
+        "blocks.content-grid-section": {
+          populate: {
+            theme: true,
+            contentCta: true,
+            content: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+          },
+        },
       },
     },
   },

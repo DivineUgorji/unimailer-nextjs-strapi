@@ -32,7 +32,8 @@
         "blocks.pricing-section",
         "blocks.showcase-section",
         "blocks.testimonials-section",
-        "blocks.scroll-banner-section"
+        "blocks.scroll-banner-section",
+        "blocks.content-grid-section"
       ]
     }
   }

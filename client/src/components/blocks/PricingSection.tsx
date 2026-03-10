@@ -15,7 +15,7 @@ export function PricingSection({
       <div className="container px-4 md:px-8 lg:px-33 py-12 md:py-14">
         <h2 className="text-center max-w-[30ch] mx-auto mb-12">{heading}</h2>
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul className="grid gap-6 grid-cols-[repeat(auto-fit,minmax(280px,1fr))]">
           {plans?.map((plan) => {
             const planThemeClasses = getThemeClasses(
               plan.themeVariant?.variant ?? theme?.variant,

@@ -81,6 +81,14 @@ export interface highlightItems {
   text: string;
 }
 
+export interface contentProps {
+  id: number;
+  image: ImageProps;
+  title: string;
+  excerpt: string;
+  link: LinkProps;
+}
+
 // export interface ScrollingRowProps = {
 //   images: ImageProps[];
 //   direction?: "left" | "right";
@@ -100,7 +108,8 @@ type ComponentType =
   | "blocks.pricing-section"
   | "blocks.showcase-section"
   | "blocks.testimonials-section"
-  | "blocks.scroll-banner-section";
+  | "blocks.scroll-banner-section"
+  | "blocks.content-grid-section";
 
 interface Base<
   T extends ComponentType,
@@ -128,7 +137,8 @@ export type Block =
   | PricingSectionProps
   | ShowcaseSectionProps
   | TestimonialsSectionProps
-  | ScrollBannerSectionProps;
+  | ScrollBannerSectionProps
+  | ContentGridSectionProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -217,4 +227,12 @@ export interface ScrollBannerSectionProps extends Base<"blocks.scroll-banner-sec
   theme?: Theme;
   speed?: number;
   items: highlightItems[];
+}
+
+export interface ContentGridSectionProps extends Base<"blocks.content-grid-section"> {
+  theme?: Theme;
+  heading: string;
+  description: string;
+  contentCta?: ButtonProps;
+  content: contentProps[];
 }

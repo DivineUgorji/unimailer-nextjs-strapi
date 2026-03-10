@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_blocks_content_grid_sections",
+  "info": {
+    "displayName": "Content grid section"
+  },
+  "options": {},
+  "attributes": {
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "contentCta": {
+      "type": "component",
+      "component": "elements.button",
+      "repeatable": false
+    },
+    "content": {
+      "type": "component",
+      "component": "elements.content-post",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
