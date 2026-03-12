@@ -40,6 +40,19 @@ export interface BlocksHeroSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksHomepageCta extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_homepage_ctas';
+  info: {
+    displayName: 'Homepage cta';
+  };
+  attributes: {
+    floatingIcon: Schema.Attribute.Component<'elements.floating-icon', false>;
+    homeCtaButton: Schema.Attribute.Component<'elements.button', false>;
+    text: Schema.Attribute.String;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksInvestmentSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_investment_sections';
   info: {
@@ -360,6 +373,7 @@ declare module '@strapi/strapi' {
       'blocks.content-grid-section': BlocksContentGridSection;
       'blocks.features-section': BlocksFeaturesSection;
       'blocks.hero-section': BlocksHeroSection;
+      'blocks.homepage-cta': BlocksHomepageCta;
       'blocks.investment-section': BlocksInvestmentSection;
       'blocks.navigation-section': BlocksNavigationSection;
       'blocks.pricing-section': BlocksPricingSection;

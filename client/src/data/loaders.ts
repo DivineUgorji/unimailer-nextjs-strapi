@@ -185,6 +185,20 @@ const homePageQuery = qs.stringify({
             },
           },
         },
+
+        "blocks.homepage-cta": {
+          populate: {
+            theme: true,
+            homeCtaButton: true,
+            floatingIcon: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+          },
+        },
       },
     },
   },

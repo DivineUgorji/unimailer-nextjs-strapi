@@ -109,7 +109,8 @@ type ComponentType =
   | "blocks.showcase-section"
   | "blocks.testimonials-section"
   | "blocks.scroll-banner-section"
-  | "blocks.content-grid-section";
+  | "blocks.content-grid-section"
+  | "blocks.homepage-cta";
 
 interface Base<
   T extends ComponentType,
@@ -138,7 +139,8 @@ export type Block =
   | ShowcaseSectionProps
   | TestimonialsSectionProps
   | ScrollBannerSectionProps
-  | ContentGridSectionProps;
+  | ContentGridSectionProps
+  | HomepageCtaProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -235,4 +237,11 @@ export interface ContentGridSectionProps extends Base<"blocks.content-grid-secti
   description: string;
   contentCta?: ButtonProps;
   content: contentProps[];
+}
+
+export interface HomepageCtaProps extends Base<"blocks.homepage-cta"> {
+  theme?: Theme;
+  text: string;
+  homeCtaButton: ButtonProps;
+  floatingIcon?: FloatingIconProps;
 }
