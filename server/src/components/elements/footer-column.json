@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_footer_columns",
+  "info": {
+    "displayName": "footerColumn"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "footerLinks": {
+      "type": "component",
+      "component": "elements.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

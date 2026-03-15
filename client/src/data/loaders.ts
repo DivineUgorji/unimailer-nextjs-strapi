@@ -199,6 +199,31 @@ const homePageQuery = qs.stringify({
             },
           },
         },
+
+        "blocks.footer": {
+          populate: {
+            theme: true,
+            footerLogo: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+            socialLinks: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+            footerColumns: {
+              populate: {
+                footerLinks: true,
+              },
+            },
+          },
+        },
       },
     },
   },

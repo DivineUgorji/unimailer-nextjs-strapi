@@ -458,6 +458,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         'blocks.scroll-banner-section',
         'blocks.content-grid-section',
         'blocks.homepage-cta',
+        'blocks.footer',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

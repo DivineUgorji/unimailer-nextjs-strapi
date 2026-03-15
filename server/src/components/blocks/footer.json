@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_blocks_footers",
+  "info": {
+    "displayName": "Footer"
+  },
+  "options": {},
+  "attributes": {
+    "footerLogo": {
+      "type": "component",
+      "component": "elements.logo",
+      "repeatable": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "socialLinks": {
+      "type": "component",
+      "component": "elements.social-link",
+      "repeatable": true
+    },
+    "footerColumns": {
+      "type": "component",
+      "component": "elements.footer-column",
+      "repeatable": true
+    },
+    "copyright": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

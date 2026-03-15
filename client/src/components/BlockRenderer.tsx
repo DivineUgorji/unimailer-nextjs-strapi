@@ -15,6 +15,7 @@ import { TestimonialSection } from "./blocks/TestimonialSection";
 import { ScrollBannerSection } from "./blocks/ScrollBannerSection";
 import { ContentGridSection } from "./blocks/ContentGridSection";
 import { HomepageCta } from "./blocks/HomePageCta";
+import { Footer } from "./blocks/Footer";
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -48,6 +49,8 @@ function blockRenderer(block: Block, index: number) {
       return <ContentGridSection {...block} key={index} />;
     case "blocks.homepage-cta":
       return <HomepageCta {...block} key={index} />;
+    case "blocks.footer":
+      return <Footer {...block} key={index} />;
     default:
       return null;
   }

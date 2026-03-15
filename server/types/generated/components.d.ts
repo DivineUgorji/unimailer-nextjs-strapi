@@ -26,6 +26,21 @@ export interface BlocksFeaturesSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksFooter extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_footers';
+  info: {
+    displayName: 'Footer';
+  };
+  attributes: {
+    copyright: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    footerColumns: Schema.Attribute.Component<'elements.footer-column', true>;
+    footerLogo: Schema.Attribute.Component<'elements.logo', false>;
+    socialLinks: Schema.Attribute.Component<'elements.social-link', true>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksHeroSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_hero_sections';
   info: {
@@ -251,6 +266,17 @@ export interface ElementsFloatingIcon extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsFooterColumn extends Struct.ComponentSchema {
+  collectionName: 'components_elements_footer_columns';
+  info: {
+    displayName: 'footerColumn';
+  };
+  attributes: {
+    footerLinks: Schema.Attribute.Component<'elements.link', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ElementsHighlightItems extends Struct.ComponentSchema {
   collectionName: 'components_elements_highlight_items';
   info: {
@@ -344,6 +370,20 @@ export interface ElementsScrollingCards extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsSocialLink extends Struct.ComponentSchema {
+  collectionName: 'components_elements_social_links';
+  info: {
+    displayName: 'socialLink';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+    platform: Schema.Attribute.Enumeration<
+      ['x', 'facebook', 'instagram', 'linkedin']
+    >;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ElementsStats extends Struct.ComponentSchema {
   collectionName: 'components_elements_stats';
   info: {
@@ -372,6 +412,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.content-grid-section': BlocksContentGridSection;
       'blocks.features-section': BlocksFeaturesSection;
+      'blocks.footer': BlocksFooter;
       'blocks.hero-section': BlocksHeroSection;
       'blocks.homepage-cta': BlocksHomepageCta;
       'blocks.investment-section': BlocksInvestmentSection;
@@ -389,6 +430,7 @@ declare module '@strapi/strapi' {
       'elements.content-post': ElementsContentPost;
       'elements.feature-card': ElementsFeatureCard;
       'elements.floating-icon': ElementsFloatingIcon;
+      'elements.footer-column': ElementsFooterColumn;
       'elements.highlight-items': ElementsHighlightItems;
       'elements.link': ElementsLink;
       'elements.logo': ElementsLogo;
@@ -396,6 +438,7 @@ declare module '@strapi/strapi' {
       'elements.pricing-feature': ElementsPricingFeature;
       'elements.pricing-plans': ElementsPricingPlans;
       'elements.scrolling-cards': ElementsScrollingCards;
+      'elements.social-link': ElementsSocialLink;
       'elements.stats': ElementsStats;
       'elements.theme': ElementsTheme;
     }

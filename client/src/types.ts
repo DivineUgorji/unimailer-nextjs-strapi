@@ -89,6 +89,19 @@ export interface contentProps {
   link: LinkProps;
 }
 
+export interface SocialLinkProps {
+  id: number;
+  platform: string;
+  url: string;
+  image: ImageProps;
+}
+
+export interface FooterColumnsProps {
+  id: number;
+  title: string;
+  footerLinks: LinkProps[];
+}
+
 // export interface ScrollingRowProps = {
 //   images: ImageProps[];
 //   direction?: "left" | "right";
@@ -110,7 +123,8 @@ type ComponentType =
   | "blocks.testimonials-section"
   | "blocks.scroll-banner-section"
   | "blocks.content-grid-section"
-  | "blocks.homepage-cta";
+  | "blocks.homepage-cta"
+  | "blocks.footer";
 
 interface Base<
   T extends ComponentType,
@@ -140,7 +154,8 @@ export type Block =
   | TestimonialsSectionProps
   | ScrollBannerSectionProps
   | ContentGridSectionProps
-  | HomepageCtaProps;
+  | HomepageCtaProps
+  | FooterProps;
 
 export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
   theme?: Theme;
@@ -244,4 +259,13 @@ export interface HomepageCtaProps extends Base<"blocks.homepage-cta"> {
   text: string;
   homeCtaButton: ButtonProps;
   floatingIcon?: FloatingIconProps;
+}
+
+export interface FooterProps extends Base<"blocks.footer"> {
+  theme?: Theme;
+  footerLogo: LogoProps;
+  description: string;
+  copyright: string;
+  socialLinks: SocialLinkProps[];
+  footerColumns: FooterColumnsProps[];
 }

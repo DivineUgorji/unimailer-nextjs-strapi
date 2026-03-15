@@ -34,7 +34,8 @@
         "blocks.testimonials-section",
         "blocks.scroll-banner-section",
         "blocks.content-grid-section",
-        "blocks.homepage-cta"
+        "blocks.homepage-cta",
+        "blocks.footer"
       ]
     }
   }
