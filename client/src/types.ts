@@ -108,6 +108,14 @@ export interface FooterColumnsProps {
 //   speed?: number;
 // }
 
+export interface HeaderData {
+  id: number;
+  theme?: Theme;
+  logo?: LogoProps;
+  links?: LinkProps[];
+  navCta?: ButtonProps;
+}
+
 type ComponentType =
   | "blocks.hero-section"
   | "blocks.trust-badges-section"
@@ -164,6 +172,21 @@ export interface NavigationSectionProps extends Base<"blocks.navigation-section"
   navCta?: ButtonProps;
 }
 
+// export interface HeaderProps extends Base<"blocks.header", HeaderData> {
+//   theme?: Theme;
+//   logo?: LogoProps;
+//   links?: LinkProps[];
+//   navCta?: ButtonProps;
+// }
+
+// export interface HeaderProps extends Base<"blocks.header", HeaderData> {
+//   data: HeaderData;
+// }
+
+export interface HeaderProps {
+  data: HeaderData;
+}
+
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   theme?: Theme;
   heading: string;
@@ -211,17 +234,20 @@ export interface ProcessSectionProps extends Base<"blocks.process-section"> {
   theme?: Theme;
   steps: subTextBlockprop[];
 }
+
 export interface TeamSectionProps extends Base<"blocks.team-section"> {
   heading: string;
   theme?: Theme;
   teamCard?: FeatureCardProps[];
   teamSectionCta?: ButtonProps;
 }
+
 export interface PricingSectionProps extends Base<"blocks.pricing-section"> {
   heading: string;
   theme?: Theme;
   plans: PricingPlanProps[];
 }
+
 export interface ShowcaseSectionProps extends Base<"blocks.showcase-section"> {
   heading: string;
   image: ImageProps;

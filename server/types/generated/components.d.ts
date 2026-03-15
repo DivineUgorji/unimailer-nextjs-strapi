@@ -407,6 +407,19 @@ export interface ElementsTheme extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutHeader extends Struct.ComponentSchema {
+  collectionName: 'components_layout_headers';
+  info: {
+    displayName: 'Header';
+  };
+  attributes: {
+    links: Schema.Attribute.Component<'elements.link', true>;
+    logo: Schema.Attribute.Component<'elements.logo', false>;
+    navCta: Schema.Attribute.Component<'elements.button', false>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -441,6 +454,7 @@ declare module '@strapi/strapi' {
       'elements.social-link': ElementsSocialLink;
       'elements.stats': ElementsStats;
       'elements.theme': ElementsTheme;
+      'layout.header': LayoutHeader;
     }
   }
 }

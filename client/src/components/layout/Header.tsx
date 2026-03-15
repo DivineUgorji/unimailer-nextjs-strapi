@@ -1,30 +1,29 @@
 import { StrapiImage } from "@/components/Strapi-image";
 import { Button } from "@/components/ui/Button";
-import type { NavigationSectionProps } from "@/types";
+import type { HeaderProps } from "@/types";
 import { getThemeClasses } from "@/utils/theme";
+import Link from "next/link";
 
-export function NavigationSection({
-  theme,
-  logo,
-  links,
-  navCta,
-}: Readonly<NavigationSectionProps>) {
+export function Header({ data }: HeaderProps) {
+  const { theme, logo, links, navCta } = data ?? {};
   const themeClasses = getThemeClasses(theme?.variant);
+
   return (
-    // <nav className="bg-neutral-500 px-4 sm:px-8 lg:px-33 py-6">
     <nav
       className={`${themeClasses.background} ${themeClasses.text} px-4 sm:px-8 lg:px-33 py-6`}
     >
       <div className="container flex items-center justify-between">
         {/* Logo */}
         {logo?.image && (
-          <StrapiImage
-            src={logo.image.url}
-            alt={logo.image.alternativeText || "Logo"}
-            width={152}
-            height={33}
-            style={{ objectFit: "contain", maxWidth: "100%", height: "auto" }}
-          />
+          <Link href="./">
+            <StrapiImage
+              src={logo.image.url}
+              alt={logo.image.alternativeText || "Logo"}
+              width={152}
+              height={33}
+              style={{ objectFit: "contain", maxWidth: "100%", height: "auto" }}
+            />
+          </Link>
         )}
 
         {/* Links */}

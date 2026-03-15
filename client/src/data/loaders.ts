@@ -6,17 +6,6 @@ const homePageQuery = qs.stringify({
   populate: {
     blocks: {
       on: {
-        "blocks.navigation-section": {
-          populate: {
-            theme: true,
-            logo: {
-              populate: { image: { fields: ["url", "alternativeText"] } },
-            },
-            links: true,
-            navCta: true,
-          },
-        },
-
         "blocks.hero-section": {
           populate: {
             theme: true,
@@ -236,4 +225,88 @@ export default async function getHomePage() {
   url.search = homePageQuery;
 
   return await fetchAPI(url.href, { method: "GET" });
+}
+
+const pageBySlugQuery = (slug: string) =>
+  qs.stringify({
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+    populate: {
+      blocks: {
+        on: {
+          "blocks.hero-section": {
+            populate: {
+              theme: true,
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              cta: true,
+            },
+          },
+
+          "blocks.footer": {
+            populate: {
+              theme: true,
+              footerLogo: {
+                populate: {
+                  image: {
+                    fields: ["url", "alternativeText"],
+                  },
+                },
+              },
+              socialLinks: {
+                populate: {
+                  image: {
+                    fields: ["url", "alternativeText"],
+                  },
+                },
+              },
+              footerColumns: {
+                populate: {
+                  footerLinks: true,
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+export async function getPageBySlug(slug: string) {
+  const path = "/api/pages";
+  const BASE_URL = getStrapiURL();
+  const url = new URL(path, BASE_URL);
+  url.search = pageBySlugQuery(slug);
+  return await fetchAPI(url.href, { method: "GET" });
+}
+
+const globalSettingQuery = qs.stringify({
+  populate: {
+    header: {
+      populate: {
+        theme: true,
+        logo: {
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        links: true,
+        navCta: true,
+      },
+    },
+  },
+});
+
+export async function getGlobalSettings() {
+  const path = "/api/global";
+  const BASE_URL = getStrapiURL();
+  const url = new URL(path, BASE_URL);
+  url.search = globalSettingQuery;
+  return fetchAPI(url.href, { method: "GET" });
 }
