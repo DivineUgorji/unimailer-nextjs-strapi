@@ -26,21 +26,6 @@ export interface BlocksFeaturesSection extends Struct.ComponentSchema {
   };
 }
 
-export interface BlocksFooter extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_footers';
-  info: {
-    displayName: 'Footer';
-  };
-  attributes: {
-    copyright: Schema.Attribute.String;
-    description: Schema.Attribute.Text;
-    footerColumns: Schema.Attribute.Component<'elements.footer-column', true>;
-    footerLogo: Schema.Attribute.Component<'elements.logo', false>;
-    socialLinks: Schema.Attribute.Component<'elements.social-link', true>;
-    theme: Schema.Attribute.Component<'elements.theme', false>;
-  };
-}
-
 export interface BlocksHeroSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_hero_sections';
   info: {
@@ -407,6 +392,21 @@ export interface ElementsTheme extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutFooter extends Struct.ComponentSchema {
+  collectionName: 'components_layout_footers';
+  info: {
+    displayName: 'Footer';
+  };
+  attributes: {
+    copyright: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    footerColumns: Schema.Attribute.Component<'elements.footer-column', true>;
+    footerLogo: Schema.Attribute.Component<'elements.logo', false>;
+    socialLinks: Schema.Attribute.Component<'elements.social-link', true>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface LayoutHeader extends Struct.ComponentSchema {
   collectionName: 'components_layout_headers';
   info: {
@@ -425,7 +425,6 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'blocks.content-grid-section': BlocksContentGridSection;
       'blocks.features-section': BlocksFeaturesSection;
-      'blocks.footer': BlocksFooter;
       'blocks.hero-section': BlocksHeroSection;
       'blocks.homepage-cta': BlocksHomepageCta;
       'blocks.investment-section': BlocksInvestmentSection;
@@ -454,6 +453,7 @@ declare module '@strapi/strapi' {
       'elements.social-link': ElementsSocialLink;
       'elements.stats': ElementsStats;
       'elements.theme': ElementsTheme;
+      'layout.footer': LayoutFooter;
       'layout.header': LayoutHeader;
     }
   }

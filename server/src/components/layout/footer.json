@@ -1,10 +1,15 @@
 {
-  "collectionName": "components_blocks_footers",
+  "collectionName": "components_layout_footers",
   "info": {
     "displayName": "Footer"
   },
   "options": {},
   "attributes": {
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
     "footerLogo": {
       "type": "component",
       "component": "elements.logo",
@@ -25,11 +30,6 @@
     },
     "copyright": {
       "type": "string"
-    },
-    "theme": {
-      "type": "component",
-      "component": "elements.theme",
-      "repeatable": false
     }
   },
   "config": {}

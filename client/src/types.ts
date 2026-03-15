@@ -116,10 +116,18 @@ export interface HeaderData {
   navCta?: ButtonProps;
 }
 
+export interface FooterData {
+  theme?: Theme;
+  footerLogo: LogoProps;
+  description: string;
+  copyright: string;
+  socialLinks: SocialLinkProps[];
+  footerColumns: FooterColumnsProps[];
+}
+
 type ComponentType =
   | "blocks.hero-section"
   | "blocks.trust-badges-section"
-  | "blocks.navigation-section"
   | "blocks.features-section"
   | "blocks.stats-section"
   | "blocks.services-section"
@@ -131,8 +139,7 @@ type ComponentType =
   | "blocks.testimonials-section"
   | "blocks.scroll-banner-section"
   | "blocks.content-grid-section"
-  | "blocks.homepage-cta"
-  | "blocks.footer";
+  | "blocks.homepage-cta";
 
 interface Base<
   T extends ComponentType,
@@ -150,7 +157,6 @@ interface Base<
 export type Block =
   | HeroSectionProps
   | TrustedBadgesSectionProps
-  | NavigationSectionProps
   | FeaturesSectionProps
   | StatsSectionProps
   | ServicesSectionProps
@@ -162,29 +168,14 @@ export type Block =
   | TestimonialsSectionProps
   | ScrollBannerSectionProps
   | ContentGridSectionProps
-  | HomepageCtaProps
-  | FooterProps;
-
-export interface NavigationSectionProps extends Base<"blocks.navigation-section"> {
-  theme?: Theme;
-  logo?: LogoProps;
-  links?: LinkProps[];
-  navCta?: ButtonProps;
-}
-
-// export interface HeaderProps extends Base<"blocks.header", HeaderData> {
-//   theme?: Theme;
-//   logo?: LogoProps;
-//   links?: LinkProps[];
-//   navCta?: ButtonProps;
-// }
-
-// export interface HeaderProps extends Base<"blocks.header", HeaderData> {
-//   data: HeaderData;
-// }
+  | HomepageCtaProps;
 
 export interface HeaderProps {
   data: HeaderData;
+}
+
+export interface FooterProps {
+  data: FooterData;
 }
 
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
@@ -285,13 +276,4 @@ export interface HomepageCtaProps extends Base<"blocks.homepage-cta"> {
   text: string;
   homeCtaButton: ButtonProps;
   floatingIcon?: FloatingIconProps;
-}
-
-export interface FooterProps extends Base<"blocks.footer"> {
-  theme?: Theme;
-  footerLogo: LogoProps;
-  description: string;
-  copyright: string;
-  socialLinks: SocialLinkProps[];
-  footerColumns: FooterColumnsProps[];
 }

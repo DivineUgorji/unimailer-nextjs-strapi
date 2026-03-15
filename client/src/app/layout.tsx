@@ -3,9 +3,10 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import clsx from "clsx";
-import { Header } from "@/components/layout/Header";
 import { getGlobalSettings } from "@/data/loaders";
-import { HeaderData } from "@/types";
+import { Header } from "@/components/layout/Header";
+import { notFound } from "next/navigation";
+import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,10 +41,11 @@ export const metadata: Metadata = {
 //   return { header: data?.header };
 // }
 
-async function loader(): Promise<{ header: HeaderData }> {
+async function loader() {
   const { data } = await getGlobalSettings();
-  if (!data) throw new Error("Failed to fetch global settings");
-  return { header: data.header };
+  console.dir(data, { depth: null });
+  if (!data) notFound();
+  return { header: data.header, footer: data.footer };
 }
 
 export default async function RootLayout({
@@ -51,7 +53,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { header } = await loader();
+  const { header, footer } = await loader();
   return (
     <html lang="en">
       <body
@@ -59,6 +61,7 @@ export default async function RootLayout({
       >
         <Header data={header} />
         {children}
+        <Footer data={footer} />
       </body>
     </html>
   );

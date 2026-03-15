@@ -445,6 +445,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    footer: Schema.Attribute.Component<'layout.footer', false>;
     header: Schema.Attribute.Component<'layout.header', false>;
     heading: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -488,7 +489,6 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         'blocks.scroll-banner-section',
         'blocks.content-grid-section',
         'blocks.homepage-cta',
-        'blocks.footer',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -521,7 +521,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['blocks.hero-section', 'blocks.footer', 'blocks.navigation-section']
+      ['blocks.hero-section', 'blocks.navigation-section']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

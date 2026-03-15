@@ -6,14 +6,15 @@ import { getThemeClasses } from "@/utils/theme";
 import Link from "next/link";
 import { motion, Variants } from "motion/react";
 
-export function Footer({
-  theme,
-  footerLogo,
-  description,
-  socialLinks,
-  footerColumns,
-  copyright,
-}: Readonly<FooterProps>) {
+export function Footer({ data }: Readonly<FooterProps>) {
+  const {
+    theme,
+    footerLogo,
+    description,
+    socialLinks,
+    footerColumns,
+    copyright,
+  } = data;
   const themeClasses = getThemeClasses(theme?.variant);
 
   const container = {

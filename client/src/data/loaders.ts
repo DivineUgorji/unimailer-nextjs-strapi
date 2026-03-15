@@ -188,31 +188,6 @@ const homePageQuery = qs.stringify({
             },
           },
         },
-
-        "blocks.footer": {
-          populate: {
-            theme: true,
-            footerLogo: {
-              populate: {
-                image: {
-                  fields: ["url", "alternativeText"],
-                },
-              },
-            },
-            socialLinks: {
-              populate: {
-                image: {
-                  fields: ["url", "alternativeText"],
-                },
-              },
-            },
-            footerColumns: {
-              populate: {
-                footerLinks: true,
-              },
-            },
-          },
-        },
       },
     },
   },
@@ -246,31 +221,6 @@ const pageBySlugQuery = (slug: string) =>
               cta: true,
             },
           },
-
-          "blocks.footer": {
-            populate: {
-              theme: true,
-              footerLogo: {
-                populate: {
-                  image: {
-                    fields: ["url", "alternativeText"],
-                  },
-                },
-              },
-              socialLinks: {
-                populate: {
-                  image: {
-                    fields: ["url", "alternativeText"],
-                  },
-                },
-              },
-              footerColumns: {
-                populate: {
-                  footerLinks: true,
-                },
-              },
-            },
-          },
         },
       },
     },
@@ -298,6 +248,30 @@ const globalSettingQuery = qs.stringify({
         },
         links: true,
         navCta: true,
+      },
+    },
+    footer: {
+      populate: {
+        theme: true,
+        footerLogo: {
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        socialLinks: {
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+        footerColumns: {
+          populate: {
+            footerLinks: true,
+          },
+        },
       },
     },
   },
