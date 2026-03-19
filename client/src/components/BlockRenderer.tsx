@@ -14,7 +14,8 @@ import { TestimonialSection } from "./blocks/TestimonialSection";
 import { ScrollBannerSection } from "./blocks/ScrollBannerSection";
 import { ContentGridSection } from "./blocks/ContentGridSection";
 import { HomepageCta } from "./blocks/HomePageCta";
-// import { Footer } from "./blocks/Footer";
+import { FeaturedArticle } from "./blocks/FeaturedArticle";
+import { Subscribe } from "./blocks/Subscribe";
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -46,8 +47,10 @@ function blockRenderer(block: Block, index: number) {
       return <ContentGridSection {...block} key={index} />;
     case "blocks.homepage-cta":
       return <HomepageCta {...block} key={index} />;
-    // case "blocks.footer":
-    //   return <Footer {...block} key={index} />;
+    case "blocks.featured-article":
+      return <FeaturedArticle key={block.id} {...block} />;
+    case "blocks.subscribe":
+      return <Subscribe key={block.id} {...block} />;
     default:
       return null;
   }

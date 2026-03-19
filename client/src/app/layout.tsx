@@ -45,7 +45,7 @@ async function loader() {
   const { data } = await getGlobalSettings();
   console.dir(data, { depth: null });
   if (!data) notFound();
-  return { header: data.header, footer: data.footer };
+  return { header: data?.header, footer: data?.footer };
 }
 
 export default async function RootLayout({

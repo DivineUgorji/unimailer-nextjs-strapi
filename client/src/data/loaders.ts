@@ -221,6 +221,20 @@ const pageBySlugQuery = (slug: string) =>
               cta: true,
             },
           },
+
+          "blocks.featured-article": {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"],
+              },
+              cta: true,
+              theme: true,
+            },
+          },
+
+          "blocks.subscribe": {
+            populate: true,
+          },
         },
       },
     },
@@ -231,6 +245,7 @@ export async function getPageBySlug(slug: string) {
   const BASE_URL = getStrapiURL();
   const url = new URL(path, BASE_URL);
   url.search = pageBySlugQuery(slug);
+  console.log("FULL URL:", url.href);
   return await fetchAPI(url.href, { method: "GET" });
 }
 

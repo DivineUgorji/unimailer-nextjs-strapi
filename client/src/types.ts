@@ -139,7 +139,9 @@ type ComponentType =
   | "blocks.testimonials-section"
   | "blocks.scroll-banner-section"
   | "blocks.content-grid-section"
-  | "blocks.homepage-cta";
+  | "blocks.homepage-cta"
+  | "blocks.featured-article"
+  | "blocks.subscribe";
 
 interface Base<
   T extends ComponentType,
@@ -168,7 +170,9 @@ export type Block =
   | TestimonialsSectionProps
   | ScrollBannerSectionProps
   | ContentGridSectionProps
-  | HomepageCtaProps;
+  | HomepageCtaProps
+  | FeaturedArticleProps
+  | SubscribeProps;
 
 export interface HeaderProps {
   data: HeaderData;
@@ -276,4 +280,19 @@ export interface HomepageCtaProps extends Base<"blocks.homepage-cta"> {
   text: string;
   homeCtaButton: ButtonProps;
   floatingIcon?: FloatingIconProps;
+}
+
+export interface FeaturedArticleProps extends Base<"blocks.featured-article"> {
+  theme?: Theme;
+  headline: string;
+  excerpt: string;
+  cta: LinkProps;
+  image: ImageProps;
+}
+
+export interface SubscribeProps extends Base<"blocks.subscribe"> {
+  heading: string;
+  description: string;
+  placeholder: string;
+  buttonText: string;
 }

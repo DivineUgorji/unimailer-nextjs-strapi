@@ -14,6 +14,20 @@ export interface BlocksContentGridSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksFeaturedArticle extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_featured_articles';
+  info: {
+    displayName: 'Featured Article';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'elements.link', false>;
+    excerpt: Schema.Attribute.RichText;
+    headline: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksFeaturesSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_features_sections';
   info: {
@@ -156,6 +170,19 @@ export interface BlocksStatsSection extends Struct.ComponentSchema {
     image: Schema.Attribute.Media<'images'>;
     stats: Schema.Attribute.Component<'elements.stats', true>;
     theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
+export interface BlocksSubscribe extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_subscribes';
+  info: {
+    displayName: 'Subscribe';
+  };
+  attributes: {
+    buttonText: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    placeholder: Schema.Attribute.String;
   };
 }
 
@@ -424,6 +451,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.content-grid-section': BlocksContentGridSection;
+      'blocks.featured-article': BlocksFeaturedArticle;
       'blocks.features-section': BlocksFeaturesSection;
       'blocks.hero-section': BlocksHeroSection;
       'blocks.homepage-cta': BlocksHomepageCta;
@@ -435,6 +463,7 @@ declare module '@strapi/strapi' {
       'blocks.services-section': BlocksServicesSection;
       'blocks.showcase-section': BlocksShowcaseSection;
       'blocks.stats-section': BlocksStatsSection;
+      'blocks.subscribe': BlocksSubscribe;
       'blocks.team-section': BlocksTeamSection;
       'blocks.testimonials-section': BlocksTestimonialsSection;
       'blocks.trust-badges-section': BlocksTrustBadgesSection;
