@@ -40,6 +40,27 @@ export interface BlocksFeaturesSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksFullImage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_full_images';
+  info: {
+    displayName: 'Full image';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'>;
+  };
+}
+
+export interface BlocksHeading extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_headings';
+  info: {
+    displayName: 'Heading';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    linkId: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksHeroSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_hero_sections';
   info: {
@@ -91,6 +112,29 @@ export interface BlocksNavigationSection extends Struct.ComponentSchema {
     logo: Schema.Attribute.Component<'elements.logo', false>;
     navCta: Schema.Attribute.Component<'elements.button', false>;
     theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
+export interface BlocksParagraph extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_paragraphs';
+  info: {
+    displayName: 'Paragraph';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+  };
+}
+
+export interface BlocksParagraphWithImage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_paragraph_with_images';
+  info: {
+    displayName: 'Paragraph with image';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'>;
+    imageLandscape: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    reversed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 
@@ -453,10 +497,14 @@ declare module '@strapi/strapi' {
       'blocks.content-grid-section': BlocksContentGridSection;
       'blocks.featured-article': BlocksFeaturedArticle;
       'blocks.features-section': BlocksFeaturesSection;
+      'blocks.full-image': BlocksFullImage;
+      'blocks.heading': BlocksHeading;
       'blocks.hero-section': BlocksHeroSection;
       'blocks.homepage-cta': BlocksHomepageCta;
       'blocks.investment-section': BlocksInvestmentSection;
       'blocks.navigation-section': BlocksNavigationSection;
+      'blocks.paragraph': BlocksParagraph;
+      'blocks.paragraph-with-image': BlocksParagraphWithImage;
       'blocks.pricing-section': BlocksPricingSection;
       'blocks.process-section': BlocksProcessSection;
       'blocks.scroll-banner-section': BlocksScrollBannerSection;

@@ -59,7 +59,7 @@ export function Subscribe({
       {/* ── Orb container ── */}
       <div className="absolute inset-0 overflow-hidden -z-10 pointer-events-none">
         <motion.div
-          className="absolute -top-24 left-1/2 -translate-x-1/2 w-[400px] h-[400px]
+          className="absolute -top-24 left-1/2 -translate-x-1/2 w-100 h-100
                      rounded-full bg-orange-500/10 blur-[90px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

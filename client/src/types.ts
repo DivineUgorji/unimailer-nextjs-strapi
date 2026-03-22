@@ -1,3 +1,7 @@
+import type { CardVariantKey } from "@/utils/contentlist-variants";
+
+export type { CardVariantKey };
+
 export interface LinkProps {
   id: number;
   text: string;
@@ -13,7 +17,6 @@ export interface ImageProps {
 }
 
 export interface LogoProps {
-  // logoText: string;
   image: ImageProps;
 }
 
@@ -64,7 +67,6 @@ export interface PricingPlanProps {
   features: Feature[];
   pricingCta?: ButtonProps;
   themeVariant?: Theme;
-  // themeVariant?: Theme["variant"];
   isHighlighted: boolean;
 }
 
@@ -102,12 +104,6 @@ export interface FooterColumnsProps {
   footerLinks: LinkProps[];
 }
 
-// export interface ScrollingRowProps = {
-//   images: ImageProps[];
-//   direction?: "left" | "right";
-//   speed?: number;
-// }
-
 export interface HeaderData {
   id: number;
   theme?: Theme;
@@ -123,6 +119,34 @@ export interface FooterData {
   copyright: string;
   socialLinks: SocialLinkProps[];
   footerColumns: FooterColumnsProps[];
+}
+
+// ── Single declaration of CardProps ──
+export interface CardProps {
+  documentId: string;
+  title: string;
+  description: string;
+  slug: string;
+  image: ImageProps;
+  price?: string;
+  createdAt?: string;
+  startDate?: string;
+  basePath: string;
+  cardVariant?: CardVariantKey;
+}
+
+// ── Single declaration of ArticleProps ──
+export interface ArticleProps extends Omit<
+  CardProps,
+  "basePath" | "cardVariant"
+> {
+  id: number;
+  author?: string;
+  featured?: boolean;
+  publishedAt?: string;
+  updatedAt?: string;
+  basePath?: string;
+  cardVariant?: CardVariantKey;
 }
 
 type ComponentType =
@@ -142,6 +166,19 @@ type ComponentType =
   | "blocks.homepage-cta"
   | "blocks.featured-article"
   | "blocks.subscribe";
+
+// interface Base
+//   T extends ComponentType,
+//   D extends object = Record<string, unknown>,
+// > {
+//   id: number;
+//   __component?: T;
+//   documentId?: string;
+//   createdAt?: string;
+//   updatedAt?: string;
+//   publishedAt?: string;
+//   data?: D;
+// }
 
 interface Base<
   T extends ComponentType,
@@ -177,7 +214,6 @@ export type Block =
 export interface HeaderProps {
   data: HeaderData;
 }
-
 export interface FooterProps {
   data: FooterData;
 }
