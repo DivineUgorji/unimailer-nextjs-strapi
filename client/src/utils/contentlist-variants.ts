@@ -48,7 +48,7 @@ export const variants: Record<VariantKey, VariantConfig> = {
     badgeText: "text-neutral-800/50",
     divider: "bg-neutral-800/10",
     dotBg: "bg-neutral-800",
-    stampText: "text-neutral-800/25",
+    stampText: "text-neutral-800/50",
     stampLabel: "Editorial",
     cardWrapper:
       "border-neutral-200 bg-white hover:border-orange-500/50 hover:shadow-[0_16px_48px_rgba(238,96,52,0.11)]",

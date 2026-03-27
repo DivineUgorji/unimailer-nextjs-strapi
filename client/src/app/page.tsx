@@ -26,6 +26,7 @@ export default async function HomeRoute() {
           component={BlogCard}
           featured
           variant="dark"
+          showPagination
         />
       </div>
     </div>

@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { variants, VariantKey } from "@/utils/contentlist-variants";
+import { PaginationComponent } from "@/components/PaginationComponent";
+import { Search } from "@/components/Search";
 
 interface ContentListClientProps {
   headline: string;
@@ -9,6 +11,10 @@ interface ContentListClientProps {
   headlineAlignment?: "center" | "right" | "left";
   cards: React.ReactNode[];
   variant?: VariantKey;
+  showSearch?: boolean;
+  page?: string;
+  showPagination?: boolean;
+  pageCount?: number;
 }
 
 export function ContentListClient({
@@ -17,9 +23,12 @@ export function ContentListClient({
   headlineAlignment = "left",
   cards,
   variant = "light",
+  showSearch,
+  showPagination,
+  pageCount = 1,
 }: Readonly<ContentListClientProps>) {
   const v = variants[variant];
-
+  // const pageCount = 5;
   const gridClass =
     articleCount === 1
       ? "grid grid-cols-1 max-w-md mx-auto"
@@ -101,7 +110,6 @@ export function ContentListClient({
           transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
         />
       ))}
-
       <div className="container relative px-4 md:px-8 lg:px-16 py-20 md:py-28">
         {/* ── Section header ── */}
         <motion.div
@@ -137,6 +145,14 @@ export function ContentListClient({
             <h3 className={`m-0 max-w-xl ${v.headline}`}>
               {headline || "Featured Articles"}
             </h3>
+
+            {/* <div>{showSearch && <Search />}</div> */}
+            {/* Search stays here — w-full on mobile, max-w-md on larger screens */}
+            {showSearch && (
+              <div className="w-full md:max-w-md">
+                <Search />
+              </div>
+            )}
           </div>
 
           {/* Live badge */}
@@ -195,7 +211,7 @@ export function ContentListClient({
 
         {/* ── Bottom meta row ── */}
         <motion.div
-          className={`flex items-center justify-between mt-14 pt-6
+          className={`flex items-center justify-between mt-14 py-6 px-6
                      border-t ${v.divider}`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -225,6 +241,7 @@ export function ContentListClient({
               {new Date().getFullYear()} · {v.stampLabel}
             </span>
           </div>
+          {showPagination && <PaginationComponent pageCount={pageCount} />}
         </motion.div>
       </div>
     </section>

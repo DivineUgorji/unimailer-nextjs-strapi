@@ -9,15 +9,26 @@ interface ContentListProps {
   path: string;
   featured?: boolean;
   variant?: VariantKey;
+  showSearch?: boolean;
+  page?: string;
+  showPagination?: boolean;
   component: React.ComponentType<
     ArticleProps & { cardVariant?: CardVariantKey }
   >;
   headlineAlignment?: "center" | "right" | "left";
 }
 
-async function loader(path: string, featured?: boolean) {
-  const { data } = await getContent(path, featured);
-  return { articles: (data as ArticleProps[]) || [] };
+async function loader(
+  path: string,
+  featured?: boolean,
+  query?: string,
+  page?: string,
+) {
+  const { data, meta } = await getContent(path, featured, query, page);
+  return {
+    articles: (data as ArticleProps[]) || [],
+    pageCount: meta?.pagination?.pageCount || 1,
+  };
 }
 
 export async function ContentList({
@@ -25,10 +36,14 @@ export async function ContentList({
   path,
   featured,
   variant = "light",
+  showSearch,
+  query,
+  page,
+  showPagination,
   component: Component,
   headlineAlignment = "left",
 }: Readonly<ContentListProps>) {
-  const { articles } = await loader(path, featured);
+  const { articles, pageCount } = await loader(path, featured, query, page);
 
   const cardVariantMap: Record<VariantKey, CardVariantKey> = {
     light: "light",
@@ -51,6 +66,9 @@ export async function ContentList({
       headlineAlignment={headlineAlignment}
       variant={variant}
       cards={cards}
+      showSearch={showSearch}
+      showPagination={showPagination}
+      pageCount={pageCount}
     />
   );
 }
