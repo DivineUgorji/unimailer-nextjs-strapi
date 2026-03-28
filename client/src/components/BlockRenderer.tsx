@@ -16,6 +16,10 @@ import { ContentGridSection } from "./blocks/ContentGridSection";
 import { HomepageCta } from "./blocks/HomePageCta";
 import { FeaturedArticle } from "./blocks/FeaturedArticle";
 import { Subscribe } from "./blocks/Subscribe";
+import { BlogHeadingBlock } from "./blocks/BlogHeadingBlock";
+import { BlogParagraphBlock } from "./blocks/BlogParagraphBlock";
+import { BlogParagraphWithImage } from "./blocks/BlogParagraphWithImage";
+import { BlogFullImageBlock } from "./blocks/BlogFullImageBlock";
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -51,6 +55,14 @@ function blockRenderer(block: Block, index: number) {
       return <FeaturedArticle key={block.id} {...block} />;
     case "blocks.subscribe":
       return <Subscribe key={block.id} {...block} />;
+    case "blocks.heading":
+      return <BlogHeadingBlock {...block} key={index} />;
+    case "blocks.paragraph":
+      return <BlogParagraphBlock {...block} key={index} />;
+    case "blocks.paragraph-with-image":
+      return <BlogParagraphWithImage {...block} key={index} />;
+    case "blocks.full-image":
+      return <BlogFullImageBlock {...block} key={index} />;
     default:
       return null;
   }

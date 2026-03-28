@@ -165,7 +165,11 @@ type ComponentType =
   | "blocks.content-grid-section"
   | "blocks.homepage-cta"
   | "blocks.featured-article"
-  | "blocks.subscribe";
+  | "blocks.subscribe"
+  | "blocks.heading" // ← new
+  | "blocks.paragraph" // ← new
+  | "blocks.paragraph-with-image" // ← new
+  | "blocks.full-image";
 
 // interface Base
 //   T extends ComponentType,
@@ -209,7 +213,11 @@ export type Block =
   | ContentGridSectionProps
   | HomepageCtaProps
   | FeaturedArticleProps
-  | SubscribeProps;
+  | SubscribeProps
+  | HeadingBlockProps // ← new
+  | ParagraphBlockProps // ← new
+  | ParagraphWithImageProps // ← new
+  | FullImageBlockProps;
 
 export interface HeaderProps {
   data: HeaderData;
@@ -331,4 +339,39 @@ export interface SubscribeProps extends Base<"blocks.subscribe"> {
   description: string;
   placeholder: string;
   buttonText: string;
+}
+
+export interface HeadingBlockProps extends Base<"blocks.heading"> {
+  heading: string;
+  linkId?: string;
+}
+
+export interface ParagraphBlockProps extends Base<"blocks.paragraph"> {
+  content: string;
+}
+
+export interface ParagraphWithImageProps extends Base<"blocks.paragraph-with-image"> {
+  content: string;
+  image: ImageProps;
+  reversed?: boolean;
+  imageLandscape?: boolean;
+}
+
+export interface FullImageBlockProps extends Base<"blocks.full-image"> {
+  image: ImageProps;
+}
+
+export interface ArticleProps extends Omit<
+  CardProps,
+  "basePath" | "cardVariant"
+> {
+  id: number;
+  author?: string;
+  featured?: boolean;
+  publishedAt?: string;
+  updatedAt?: string;
+  basePath?: string;
+  cardVariant?: CardVariantKey;
+  body?: string; // ← rich text field
+  blocks?: Block[]; // ← optional dynamic zone
 }

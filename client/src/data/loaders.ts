@@ -333,3 +333,53 @@ export async function getContent(
 
   return fetchAPI(url.href, { method: "GET" });
 }
+
+const blogPopulate = {
+  blocks: {
+    on: {
+      "blocks.subscribe": {
+        populate: true,
+      },
+      "blocks.heading": {
+        populate: true,
+      },
+      "blocks.paragraph-with-image": {
+        populate: {
+          image: {
+            fields: ["url", "alternativeText"],
+          },
+        },
+      },
+      "blocks.paragraph": {
+        populate: true,
+      },
+      "blocks.full-image": {
+        populate: {
+          image: {
+            fields: ["url", "alternativeText"],
+          },
+        },
+      },
+    },
+  },
+};
+
+export async function getContentBySlug(slug: string, path: string) {
+  const BASE_URL = getStrapiURL();
+  const url = new URL(path, BASE_URL);
+  url.search = qs.stringify({
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+    populate: {
+      image: {
+        fields: ["url", "alternativeText"],
+      },
+      ...blogPopulate,
+    },
+  });
+
+  return fetchAPI(url.href, { method: "GET" });
+}
