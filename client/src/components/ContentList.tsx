@@ -1,9 +1,150 @@
-import { ArticleProps, CardVariantKey } from "@/types";
+// import { ArticleProps, CardVariantKey } from "@/types";
+// import { getContent } from "@/data/loaders";
+// import { ContentListClient } from "@/components/ContentListClient";
+// import { VariantKey } from "@/utils/contentlist-variants";
+
+// interface ContentListProps {
+//   headline: string;
+//   query?: string;
+//   path: string;
+//   featured?: boolean;
+//   variant?: VariantKey;
+//   showSearch?: boolean;
+//   page?: string;
+//   showPagination?: boolean;
+//   component: React.ComponentType<
+//     ArticleProps & { cardVariant?: CardVariantKey }
+//   >;
+//   headlineAlignment?: "center" | "right" | "left";
+// }
+
+// async function loader(
+//   path: string,
+//   featured?: boolean,
+//   query?: string,
+//   page?: string,
+// ) {
+//   const { data, meta } = await getContent(path, featured, query, page);
+//   return {
+//     articles: (data as ArticleProps[]) || [],
+//     pageCount: meta?.pagination?.pageCount || 1,
+//   };
+// }
+
+// export async function ContentList({
+//   headline,
+//   path,
+//   featured,
+//   variant = "light",
+//   showSearch,
+//   query,
+//   page,
+//   showPagination,
+//   component: Component,
+//   headlineAlignment = "left",
+// }: Readonly<ContentListProps>) {
+//   const { articles, pageCount } = await loader(path, featured, query, page);
+
+//   const cardVariantMap: Record<VariantKey, CardVariantKey> = {
+//     light: "light",
+//     dark: "dark",
+//     events: "events",
+//   };
+
+//   const cards = articles.map((article) => (
+//     <Component
+//       key={article.documentId}
+//       {...article}
+//       cardVariant={cardVariantMap[variant]}
+//     />
+//   ));
+
+//   return (
+//     <ContentListClient
+//       headline={headline}
+//       articleCount={articles.length}
+//       headlineAlignment={headlineAlignment}
+//       variant={variant}
+//       cards={cards}
+//       showSearch={showSearch}
+//       showPagination={showPagination}
+//       pageCount={pageCount}
+//     />
+//   );
+// }
+//////////////////////////////////////////
+// import { getContent } from "@/data/loaders";
+// import { ContentListClient } from "@/components/ContentListClient";
+// import { VariantKey, CardVariantKey } from "@/utils/contentlist-variants";
+
+// interface ContentListProps<T extends { documentId: string }> {
+//   headline: string;
+//   query?: string;
+//   path: string;
+//   featured?: boolean;
+//   variant?: VariantKey;
+//   showSearch?: boolean;
+//   page?: string;
+//   showPagination?: boolean;
+//   component: React.ComponentType<T & { cardVariant?: CardVariantKey }>;
+//   headlineAlignment?: "center" | "right" | "left";
+// }
+
+// async function loader(
+//   path: string,
+//   featured?: boolean,
+//   query?: string,
+//   page?: string,
+// ) {
+//   const { data, meta } = await getContent(path, featured, query, page);
+//   return {
+//     items: data || [],
+//     pageCount: meta?.pagination?.pageCount ?? 1,
+//   };
+// }
+
+// export async function ContentList<T extends { documentId: string }>({
+//   headline,
+//   path,
+//   featured,
+//   variant = "light",
+//   showSearch,
+//   showPagination,
+//   query,
+//   page,
+//   component: Component,
+//   headlineAlignment = "left",
+// }: Readonly<ContentListProps<T>>) {
+//   const { items, pageCount } = await loader(path, featured, query, page);
+
+//   const cards = items.map((item: T) => (
+//     <Component
+//       key={item.documentId}
+//       {...item}
+//       cardVariant={variant as CardVariantKey}
+//     />
+//   ));
+
+//   return (
+//     <ContentListClient
+//       headline={headline}
+//       articleCount={items.length}
+//       headlineAlignment={headlineAlignment}
+//       variant={variant}
+//       cards={cards}
+//       showSearch={showSearch}
+//       showPagination={showPagination}
+//       pageCount={pageCount}
+//     />
+//   );
+// }
+//////////////////////////////////////////
+// ContentList.tsx — add itemLabel to props
 import { getContent } from "@/data/loaders";
 import { ContentListClient } from "@/components/ContentListClient";
-import { VariantKey } from "@/utils/contentlist-variants";
+import { VariantKey, CardVariantKey } from "@/utils/contentlist-variants";
 
-interface ContentListProps {
+interface ContentListProps<T extends { documentId: string }> {
   headline: string;
   query?: string;
   path: string;
@@ -12,9 +153,9 @@ interface ContentListProps {
   showSearch?: boolean;
   page?: string;
   showPagination?: boolean;
-  component: React.ComponentType<
-    ArticleProps & { cardVariant?: CardVariantKey }
-  >;
+  itemLabel?: string; // ← optional, e.g. "article" | "service" | "event"
+  showItemCount?: boolean; // ← toggles the live badge on/off
+  component: React.ComponentType<T & { cardVariant?: CardVariantKey }>;
   headlineAlignment?: "center" | "right" | "left";
 }
 
@@ -26,49 +167,47 @@ async function loader(
 ) {
   const { data, meta } = await getContent(path, featured, query, page);
   return {
-    articles: (data as ArticleProps[]) || [],
-    pageCount: meta?.pagination?.pageCount || 1,
+    items: data || [],
+    pageCount: meta?.pagination?.pageCount ?? 1,
   };
 }
 
-export async function ContentList({
+export async function ContentList<T extends { documentId: string }>({
   headline,
   path,
   featured,
   variant = "light",
   showSearch,
+  showPagination,
   query,
   page,
-  showPagination,
+  itemLabel = "item", // ← defaults to "item" if not provided
+  showItemCount = true, // ← defaults to showing the badge
   component: Component,
   headlineAlignment = "left",
-}: Readonly<ContentListProps>) {
-  const { articles, pageCount } = await loader(path, featured, query, page);
+}: Readonly<ContentListProps<T>>) {
+  const { items, pageCount } = await loader(path, featured, query, page);
 
-  const cardVariantMap: Record<VariantKey, CardVariantKey> = {
-    light: "light",
-    dark: "dark",
-    events: "events",
-  };
-
-  const cards = articles.map((article) => (
+  const cards = items.map((item: T) => (
     <Component
-      key={article.documentId}
-      {...article}
-      cardVariant={cardVariantMap[variant]}
+      key={item.documentId}
+      {...item}
+      cardVariant={variant as CardVariantKey}
     />
   ));
 
   return (
     <ContentListClient
       headline={headline}
-      articleCount={articles.length}
+      articleCount={items.length}
       headlineAlignment={headlineAlignment}
       variant={variant}
       cards={cards}
       showSearch={showSearch}
       showPagination={showPagination}
       pageCount={pageCount}
+      itemLabel={itemLabel}
+      showItemCount={showItemCount}
     />
   );
 }

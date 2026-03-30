@@ -1,4 +1,4 @@
-export type VariantKey = "light" | "dark" | "events";
+export type VariantKey = "light" | "dark" | "services";
 export type CardVariantKey = VariantKey;
 
 export interface VariantConfig {
@@ -90,7 +90,7 @@ export const variants: Record<VariantKey, VariantConfig> = {
     cardBorder: "border-white/10",
   },
 
-  events: {
+  services: {
     section: "bg-orange-50",
     blob1: "bg-orange-500/12",
     blob2: "bg-orange-300/15",
@@ -100,16 +100,16 @@ export const variants: Record<VariantKey, VariantConfig> = {
       linear-gradient(to bottom, rgba(238,96,52,0.05) 1px, transparent 1px)
     `,
     watermark: "text-orange-900/[0.04]",
-    watermarkText: "Events",
+    watermarkText: "Services",
     cornerBorder: "border-orange-400/40",
     headline: "text-orange-950",
-    labelText: "Upcoming Events",
+    labelText: "Services we offer",
     badgeBorder: "border-orange-200 bg-white/80",
     badgeText: "text-orange-900/50",
     divider: "bg-orange-900/10",
     dotBg: "bg-orange-900",
     stampText: "text-orange-900/25",
-    stampLabel: "Events",
+    stampLabel: "Services",
     cardWrapper:
       "border-orange-100 bg-white hover:border-orange-400/60 hover:shadow-[0_16px_48px_rgba(238,96,52,0.15)]",
     cardImagefade: "from-white",

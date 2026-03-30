@@ -28,8 +28,7 @@
       ]
     },
     "slug": {
-      "type": "uid",
-      "targetField": "heading"
+      "type": "uid"
     },
     "featured": {
       "type": "boolean",
@@ -41,6 +40,12 @@
         "blocks.heading",
         "blocks.paragraph"
       ]
+    },
+    "serviceSignups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-signup.service-signup",
+      "mappedBy": "service"
     }
   }
 }

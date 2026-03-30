@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_signups",
+  "info": {
+    "singularName": "service-signup",
+    "pluralName": "service-signups",
+    "displayName": "Service Signup"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "service": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service.service",
+      "inversedBy": "serviceSignups"
+    }
+  }
+}

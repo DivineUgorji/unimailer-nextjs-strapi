@@ -23,7 +23,7 @@ async function loader(slug: string) {
 export default async function SingleBlogRoute({ params }: PageProps) {
   const { slug } = await params;
   const { article } = await loader(slug);
-  const { title, author, publishedAt, description, image, blocks } = article;
+  const { heading, author, publishedAt, description, image, blocks } = article;
 
   // ── Extract only heading blocks for the TOC ──
   const headings = (blocks ?? []).filter(
@@ -35,11 +35,11 @@ export default async function SingleBlogRoute({ params }: PageProps) {
     <section>
       <main className="min-h-screen bg-neutral-100">
         {/* ── Hero ── */}
-        <div className="relative w-full min-h-[60vh] md:aspect-[16/7] overflow-hidden">
+        <div className="relative w-full min-h-[60vh] md:aspect-16/7 overflow-hidden">
           {image && (
             <StrapiImage
               src={image.url}
-              alt={image.alternativeText || title}
+              alt={image.alternativeText || heading}
               width={1440}
               height={630}
               className="w-full h-full object-cover"
@@ -77,7 +77,7 @@ export default async function SingleBlogRoute({ params }: PageProps) {
                        text-2xl sm:text-3xl md:text-4xl lg:text-5xl
                        wrap-break-word max-w-[90%] sm:max-w-full"
               >
-                {title}
+                {heading}
               </h1>
 
               {/* Meta */}

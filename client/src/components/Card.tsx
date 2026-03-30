@@ -5,7 +5,7 @@ import { CardProps } from "@/types";
 import { variants } from "@/utils/contentlist-variants";
 
 export function Card({
-  title,
+  heading,
   description,
   slug,
   image,
@@ -14,7 +14,8 @@ export function Card({
   startDate,
   basePath,
   cardVariant = "light",
-}: Readonly<CardProps>) {
+  ctaLabel = "Read more", // ← new, customisable per usage
+}: Readonly<CardProps & { ctaLabel?: string }>) {
   const v = variants[cardVariant ?? "light"];
 
   return (
@@ -59,46 +60,47 @@ export function Card({
       {/* ── Card body ── */}
       <div className="flex flex-col gap-3 p-5 flex-1">
         {/* Date */}
-        {(() => {
-          const date = startDate ?? createdAt;
-          if (!date) return null;
-          return (
-            <div className="flex items-center gap-1.5">
-              <svg
-                className="w-3 h-3 text-orange-500 shrink-0"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                aria-hidden="true"
-              >
-                <rect x="3" y="4" width="18" height="18" rx="2" />
-                <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" />
-              </svg>
-              <span
-                className="font-mono text-[0.62rem] font-semibold
+        {startDate &&
+          (() => {
+            const date = startDate ?? createdAt;
+            if (!date) return null;
+            return (
+              <div className="flex items-center gap-1.5">
+                <svg
+                  className="w-3 h-3 text-orange-500 shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" />
+                </svg>
+                <span
+                  className="font-mono text-[0.62rem] font-semibold
                                tracking-wide uppercase text-orange-500"
-              >
-                {formatDate(date)}
-              </span>
-            </div>
-          );
-        })()}
+                >
+                  {formatDate(date)}
+                </span>
+              </div>
+            );
+          })()}
 
         {/* Accent line */}
         <div
           className="w-8 h-0.5 rounded-full bg-orange-500/40
-                        transition-all duration-500
-                        group-hover:w-16 group-hover:bg-orange-500"
+                     transition-all duration-500
+                     group-hover:w-16 group-hover:bg-orange-500"
         />
 
         {/* Title */}
         <h5
           className={`m-0 leading-snug transition-colors duration-300
-                        group-hover:text-orange-500 line-clamp-2
-                        ${v.cardTitle}`}
+                      group-hover:text-orange-500 line-clamp-2
+                      ${v.cardTitle}`}
         >
-          {title}
+          {heading}
         </h5>
 
         {/* Price */}
@@ -129,10 +131,10 @@ export function Card({
           <div className="inline-flex items-center gap-2">
             <span
               className={`font-mono text-[0.62rem] tracking-widest
-                             uppercase transition-colors duration-300
-                             group-hover:text-orange-500 ${v.cardCta}`}
+                         uppercase transition-colors duration-300
+                         group-hover:text-orange-500 ${v.cardCta}`}
             >
-              Read article
+              {ctaLabel}
             </span>
             <svg
               className="w-3 h-3 text-orange-500/50 shrink-0
@@ -158,8 +160,8 @@ export function Card({
       {/* Corner accent */}
       <div
         className="absolute bottom-0 right-0 w-7 h-7 border-b-2 border-r-2
-                      rounded-br-2xl pointer-events-none transition-all duration-500
-                      border-orange-500/0 group-hover:border-orange-500/45"
+                   rounded-br-2xl pointer-events-none transition-all duration-500
+                   border-orange-500/0 group-hover:border-orange-500/45"
       />
     </Link>
   );

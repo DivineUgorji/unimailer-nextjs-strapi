@@ -1,3 +1,4 @@
+import { getStrapiURL } from "@/utils/get-strapi-url";
 const BASE_URL = process.env.STRAPI_API_URL ?? "http://localhost:1337";
 
 export async function subscribeService(email: string) {
@@ -25,13 +26,34 @@ export async function subscribeService(email: string) {
     console.error("Subscribe Service Error:", error);
   }
 }
-
-export interface EventsSubscribeProps {
+/////////////////////////////
+//Services subscribe this.props
+////////////////////////////
+export interface ServicesSubscribeProps {
   firstName: string;
   lastName: string;
   email: string;
   telephone: string;
-  event: {
+  service: {
     connect: [string];
   };
+}
+
+export async function servicesSubscribeService(data: ServicesSubscribeProps) {
+  const BASE_URL = getStrapiURL();
+  const url = new URL("/api/service-signups", BASE_URL);
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ data: { ...data } }),
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.error("Services Subscribe Service Error:", error);
+  }
 }

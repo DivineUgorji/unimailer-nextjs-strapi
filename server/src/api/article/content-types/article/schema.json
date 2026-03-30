@@ -11,15 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "heading": {
       "type": "string"
     },
     "description": {
       "type": "text"
     },
     "slug": {
-      "type": "uid",
-      "targetField": "title"
+      "type": "uid"
     },
     "author": {
       "type": "string"
@@ -27,9 +26,7 @@
     "image": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "featured": {
       "type": "boolean",
