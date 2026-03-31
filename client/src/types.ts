@@ -555,6 +555,7 @@ export interface ServiceProps extends Omit<
   updatedAt?: string;
   basePath?: string;
   cardVariant?: CardVariantKey;
+  blocks?: Block[];
 }
 
 type ComponentType =
