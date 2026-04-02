@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_why_choose_uses",
+  "info": {
+    "displayName": "Why choose us"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
+    "features": {
+      "type": "component",
+      "component": "elements.feature-card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

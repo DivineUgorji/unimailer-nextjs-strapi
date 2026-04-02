@@ -20,6 +20,10 @@ import { BlogHeadingBlock } from "./blocks/BlogHeadingBlock";
 import { BlogParagraphBlock } from "./blocks/BlogParagraphBlock";
 import { BlogParagraphWithImage } from "./blocks/BlogParagraphWithImage";
 import { BlogFullImageBlock } from "./blocks/BlogFullImageBlock";
+import { AboutHeroSection } from "./blocks/AboutHeroSection";
+import { AboutTeamSection } from "./blocks/AboutTeamSection";
+import { AboutTeamSummarySection } from "./blocks/AboutTeamSummarySection";
+import { WhyChooseUs } from "./blocks/WhyChooseUs";
 
 function blockRenderer(block: Block, index: number) {
   switch (block.__component) {
@@ -47,8 +51,8 @@ function blockRenderer(block: Block, index: number) {
       return <TestimonialSection {...block} key={index} />;
     case "blocks.scroll-banner-section":
       return <ScrollBannerSection {...block} key={index} />;
-    case "blocks.content-grid-section":
-      return <ContentGridSection {...block} key={index} />;
+    // case "blocks.content-grid-section":
+    //   return <ContentGridSection {...block} key={index} />;
     case "blocks.homepage-cta":
       return <HomepageCta {...block} key={index} />;
     case "blocks.featured-article":
@@ -63,6 +67,14 @@ function blockRenderer(block: Block, index: number) {
       return <BlogParagraphWithImage {...block} key={index} />;
     case "blocks.full-image":
       return <BlogFullImageBlock {...block} key={index} />;
+    case "blocks.aboutpage-hero-section":
+      return <AboutHeroSection {...block} key={index} />;
+    case "blocks.about-team-section":
+      return <AboutTeamSection {...block} key={index} />;
+    case "blocks.about-team-summary-section":
+      return <AboutTeamSummarySection {...block} key={index} />;
+    case "blocks.why-choose-us":
+      return <WhyChooseUs {...block} key={index} />;
     default:
       return null;
   }

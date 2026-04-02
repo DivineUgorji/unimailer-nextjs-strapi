@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_blocks_about_team_sections",
+  "info": {
+    "displayName": "About team section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "component",
+      "component": "elements.theme",
+      "repeatable": false
+    },
+    "teamMembers": {
+      "type": "component",
+      "component": "elements.team-members-card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

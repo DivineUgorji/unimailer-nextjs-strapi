@@ -383,3 +383,69 @@ export async function getContentBySlug(slug: string, path: string) {
 
   return fetchAPI(url.href, { method: "GET" });
 }
+
+///////////////////////////////
+//About page
+////////////////////////////
+const aboutPageQuery = qs.stringify({
+  populate: {
+    blocks: {
+      on: {
+        "blocks.aboutpage-hero-section": {
+          populate: {
+            theme: true,
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+          },
+        },
+
+        "blocks.about-team-section": {
+          populate: {
+            theme: true,
+            teamMembers: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+                teamMemberAttribute: true,
+              },
+            },
+          },
+        },
+
+        "blocks.about-team-summary-section": {
+          populate: {
+            theme: true,
+            image: {
+              fields: ["url", "alternativeText"],
+            },
+            attributeCard: true,
+          },
+        },
+
+        "blocks.why-choose-us": {
+          populate: {
+            theme: true,
+            features: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"],
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+});
+
+export async function getAboutPage() {
+  const path = "/api/about-page";
+  const BASE_URL = getStrapiURL();
+  const url = new URL(path, BASE_URL);
+  url.search = aboutPageQuery;
+
+  return await fetchAPI(url.href, { method: "GET" });
+}

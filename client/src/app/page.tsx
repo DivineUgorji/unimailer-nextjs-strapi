@@ -8,7 +8,8 @@ import { BlogCard } from "@/components/BlogCard";
 export async function loader() {
   const data = await getHomePage();
   if (!data) notFound();
-  console.log(data.data.blocks);
+  // console.log(data.data.blocks);
+  console.log("Full response:", JSON.stringify(data, null, 2));
 
   return { ...data.data };
 }

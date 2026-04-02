@@ -496,6 +496,20 @@ export interface FooterColumnsProps {
   footerLinks: LinkProps[];
 }
 
+export interface AttributeCardProps {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface TeamMembersProps {
+  id: number;
+  name: string;
+  role: string;
+  image: ImageProps;
+  teamMemberAttribute: AttributeCardProps[];
+}
+
 export interface HeaderData {
   id: number;
   theme?: Theme;
@@ -540,8 +554,8 @@ export interface ArticleProps extends Omit<
   updatedAt?: string;
   basePath?: string;
   cardVariant?: CardVariantKey;
-  body?: string; // ← rich text field
-  blocks?: Block[]; // ← optional dynamic zone
+  body?: string;
+  blocks?: Block[];
 }
 
 // ── ServiceProps ──
@@ -578,7 +592,11 @@ type ComponentType =
   | "blocks.heading"
   | "blocks.paragraph"
   | "blocks.paragraph-with-image"
-  | "blocks.full-image";
+  | "blocks.full-image"
+  | "blocks.aboutpage-hero-section"
+  | "blocks.about-team-section"
+  | "blocks.about-team-summary-section"
+  | "blocks.why-choose-us";
 
 // interface Base
 //   T extends ComponentType,
@@ -626,7 +644,11 @@ export type Block =
   | HeadingBlockProps
   | ParagraphBlockProps
   | ParagraphWithImageProps
-  | FullImageBlockProps;
+  | FullImageBlockProps
+  | AboutHeroSectionProps
+  | AboutTeamSectionProps
+  | AboutTeamSummarySectionProps
+  | WhyChooseUsProps;
 
 export interface HeaderProps {
   data: HeaderData;
@@ -640,6 +662,7 @@ export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   heading: string;
   description: string;
   image: ImageProps;
+  cta: ButtonProps;
 }
 
 export interface TrustedBadgesSectionProps extends Base<"blocks.trust-badges-section"> {
@@ -768,4 +791,31 @@ export interface ParagraphWithImageProps extends Base<"blocks.paragraph-with-ima
 
 export interface FullImageBlockProps extends Base<"blocks.full-image"> {
   image: ImageProps;
+}
+
+export interface AboutHeroSectionProps extends Base<"blocks.aboutpage-hero-section"> {
+  heading: string;
+  description: string;
+  image: ImageProps;
+  theme: Theme;
+}
+
+export interface AboutTeamSectionProps extends Base<"blocks.about-team-section"> {
+  heading: string;
+  theme: Theme;
+  teamMembers: TeamMembersProps[];
+}
+
+export interface AboutTeamSummarySectionProps extends Base<"blocks.about-team-summary-section"> {
+  heading: string;
+  theme: Theme;
+  image: ImageProps;
+  summary: string;
+  attributeCard: AttributeCardProps[];
+}
+
+export interface WhyChooseUsProps extends Base<"blocks.why-choose-us"> {
+  heading: string;
+  theme: Theme;
+  features: FeatureCardProps[];
 }

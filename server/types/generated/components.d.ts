@@ -1,5 +1,47 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksAboutTeamSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_about_team_sections';
+  info: {
+    displayName: 'About team section';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    teamMembers: Schema.Attribute.Component<'elements.team-members-card', true>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
+export interface BlocksAboutTeamSummarySection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_about_team_summary_sections';
+  info: {
+    displayName: 'About team summary section';
+  };
+  attributes: {
+    attributeCard: Schema.Attribute.Component<
+      'elements.team-member-attribute',
+      true
+    >;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    summary: Schema.Attribute.Text;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
+export interface BlocksAboutpageHeroSection extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_aboutpage_hero_sections';
+  info: {
+    displayName: 'About hero section';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
 export interface BlocksContentGridSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_content_grid_sections';
   info: {
@@ -230,6 +272,22 @@ export interface BlocksSubscribe extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksTeamMemberCard extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_team_member_cards';
+  info: {
+    displayName: 'team member card';
+  };
+  attributes: {
+    achievements: Schema.Attribute.RichText;
+    certifications: Schema.Attribute.RichText;
+    education: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'>;
+    name: Schema.Attribute.String;
+    role: Schema.Attribute.String;
+    workExperience: Schema.Attribute.RichText;
+  };
+}
+
 export interface BlocksTeamSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_team_sections';
   info: {
@@ -268,6 +326,18 @@ export interface BlocksTrustBadgesSection extends Struct.ComponentSchema {
   attributes: {
     heading: Schema.Attribute.String;
     images: Schema.Attribute.Media<'images', true>;
+    theme: Schema.Attribute.Component<'elements.theme', false>;
+  };
+}
+
+export interface BlocksWhyChooseUs extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_why_choose_uses';
+  info: {
+    displayName: 'Why choose us';
+  };
+  attributes: {
+    features: Schema.Attribute.Component<'elements.feature-card', true>;
+    heading: Schema.Attribute.String;
     theme: Schema.Attribute.Component<'elements.theme', false>;
   };
 }
@@ -452,6 +522,33 @@ export interface ElementsStats extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsTeamMemberAttribute extends Struct.ComponentSchema {
+  collectionName: 'components_elements_team_member_attributes';
+  info: {
+    displayName: 'attributeCard';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ElementsTeamMembersCard extends Struct.ComponentSchema {
+  collectionName: 'components_elements_team_members_cards';
+  info: {
+    displayName: 'team members card';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+    role: Schema.Attribute.String;
+    teamMemberAttribute: Schema.Attribute.Component<
+      'elements.team-member-attribute',
+      true
+    >;
+  };
+}
+
 export interface ElementsTheme extends Struct.ComponentSchema {
   collectionName: 'components_elements_themes';
   info: {
@@ -494,6 +591,9 @@ export interface LayoutHeader extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.about-team-section': BlocksAboutTeamSection;
+      'blocks.about-team-summary-section': BlocksAboutTeamSummarySection;
+      'blocks.aboutpage-hero-section': BlocksAboutpageHeroSection;
       'blocks.content-grid-section': BlocksContentGridSection;
       'blocks.featured-article': BlocksFeaturedArticle;
       'blocks.features-section': BlocksFeaturesSection;
@@ -512,9 +612,11 @@ declare module '@strapi/strapi' {
       'blocks.showcase-section': BlocksShowcaseSection;
       'blocks.stats-section': BlocksStatsSection;
       'blocks.subscribe': BlocksSubscribe;
+      'blocks.team-member-card': BlocksTeamMemberCard;
       'blocks.team-section': BlocksTeamSection;
       'blocks.testimonials-section': BlocksTestimonialsSection;
       'blocks.trust-badges-section': BlocksTrustBadgesSection;
+      'blocks.why-choose-us': BlocksWhyChooseUs;
       'elements.button': ElementsButton;
       'elements.content-post': ElementsContentPost;
       'elements.feature-card': ElementsFeatureCard;
@@ -529,6 +631,8 @@ declare module '@strapi/strapi' {
       'elements.scrolling-cards': ElementsScrollingCards;
       'elements.social-link': ElementsSocialLink;
       'elements.stats': ElementsStats;
+      'elements.team-member-attribute': ElementsTeamMemberAttribute;
+      'elements.team-members-card': ElementsTeamMembersCard;
       'elements.theme': ElementsTheme;
       'layout.footer': LayoutFooter;
       'layout.header': LayoutHeader;
