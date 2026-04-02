@@ -27,7 +27,7 @@ const INITIAL_STATE: ServicesSubscribeState = {
   formData: null,
 };
 
-// ── Reusable input component ──
+
 interface TextInputProps {
   id: string;
   label: string;
