@@ -48,7 +48,7 @@ export function ContentListClient({
       {/* ── Blob layer ── */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
         <motion.div
-          className={`absolute -top-40 -left-40 w-[550px] h-[550px]
+          className={`absolute -top-40 -left-40 w-137.5 h-137.5
                      rounded-full blur-[110px] ${v.blob1}`}
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -56,7 +56,7 @@ export function ContentListClient({
           transition={{ duration: 1.6, ease: "easeOut" }}
         />
         <motion.div
-          className={`absolute -top-20 right-0 w-[380px] h-[380px]
+          className={`absolute -top-20 right-0 w-95 h-95
                      rounded-full blur-[90px] ${v.blob2}`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -65,7 +65,7 @@ export function ContentListClient({
         />
         <motion.div
           className={`absolute bottom-0 left-1/2 -translate-x-1/2
-                     w-[600px] h-[250px] rounded-full blur-[80px] ${v.blob3}`}
+                     w-150 h-62.5 rounded-full blur-[80px] ${v.blob3}`}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
