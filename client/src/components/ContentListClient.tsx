@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { variants, VariantKey } from "@/utils/contentlist-variants";
-import { PaginationComponent } from "@/components/PaginationComponent";
+import { PaginationWrapper } from "@/components/providers/PaginationWrapper";
 import { Search } from "@/components/Search";
 
 interface ContentListClientProps {
@@ -251,7 +251,7 @@ export function ContentListClient({
               {new Date().getFullYear()} · {v.stampLabel}
             </span>
           </div>
-          {showPagination && <PaginationComponent pageCount={pageCount} />}
+          {showPagination && <PaginationWrapper pageCount={pageCount} />}
         </motion.div>
       </div>
     </section>

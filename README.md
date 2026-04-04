@@ -1,1 +1,0 @@
-# unimailer-nextjs-strapi

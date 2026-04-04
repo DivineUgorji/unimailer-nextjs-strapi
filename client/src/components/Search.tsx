@@ -84,8 +84,7 @@ export function Search() {
                      font-mono tracking-wide min-w-0"
           aria-label="Search articles"
         />
-
-        {/* ── Clear button — only visible when there's a value ── */}
+        {/* // Clear button — only visible when there's a value */}
         {value && (
           <button
             onClick={handleClear}
@@ -103,11 +102,10 @@ export function Search() {
             />
           </button>
         )}
-
-        {/* ── Search button ──
+        {/* Search button
              On small screens: icon only (compact square)
              On md+: icon + "Search" text label
-             Transition is smooth as the text fades and width adjusts  ── */}
+             Transition is smooth as the text fades and width adjusts */}
         <button
           onClick={() => handleSearch(value)}
           className="group shrink-0 flex items-center justify-center

@@ -2,6 +2,15 @@ import type { NextConfig } from "next";
 import type { RuleSetRule } from "webpack";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    rules: {
+      "*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
+      },
+    },
+  },
+
   webpack(config) {
     const rules = config.module.rules as RuleSetRule[];
 
@@ -35,13 +44,22 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: false,
     remotePatterns: [
       {
+        protocol: "https",
+        hostname: "unimailer-server-app.onrender.com",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+      {
         protocol: "http",
-        hostname: "127.0.0.1",
+        hostname: "localhost",
         port: "1337",
         pathname: "/uploads/**",
       },
     ],
-    unoptimized: false,
   },
 };
 

@@ -11,8 +11,8 @@ interface ContentListProps<T extends { documentId: string }> {
   showSearch?: boolean;
   page?: string;
   showPagination?: boolean;
-  itemLabel?: string; 
-  showItemCount?: boolean; 
+  itemLabel?: string;
+  showItemCount?: boolean;
   component: React.ComponentType<T & { cardVariant?: CardVariantKey }>;
   headlineAlignment?: "center" | "right" | "left";
 }
@@ -39,8 +39,8 @@ export async function ContentList<T extends { documentId: string }>({
   showPagination,
   query,
   page,
-  itemLabel = "item", // ← defaults to "item" if not provided
-  showItemCount = true, // ← defaults to showing the badge
+  itemLabel = "item",
+  showItemCount = true,
   component: Component,
   headlineAlignment = "left",
 }: Readonly<ContentListProps<T>>) {

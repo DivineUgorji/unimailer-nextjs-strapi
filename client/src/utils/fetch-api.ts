@@ -17,7 +17,9 @@ export async function fetchAPI(url: string, options: FetchAPIOptions) {
     method,
     headers: {
       "Content-Type": "application/json",
-      ...(authToken && { Authorization: `Bearer ${authToken}` }),
+      ...(authToken && {
+        Authorization: `Bearer ${authToken}, ${process.env.STRAPI_API_TOKEN}`,
+      }),
     },
     ...(body && { body: JSON.stringify(body) }),
     ...(next && { next }),

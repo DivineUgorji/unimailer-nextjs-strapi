@@ -9,7 +9,7 @@ import { notFound } from "next/navigation";
 
 async function loader(slug: string) {
   const { data } = await getContentBySlug(slug, "/api/services");
-  const service = data[0];
+  const service = data?.[0];
   if (!service) throw notFound();
   return { service: service as ServiceProps, blocks: service?.blocks };
 }
