@@ -18,11 +18,12 @@ export async function fetchAPI(url: string, options: FetchAPIOptions) {
     headers: {
       "Content-Type": "application/json",
       ...(authToken && {
-        Authorization: `Bearer ${authToken}, ${process.env.STRAPI_API_TOKEN}`,
+        Authorization: `Bearer ${authToken}`,
       }),
     },
     ...(body && { body: JSON.stringify(body) }),
-    ...(next && { next }),
+    next: next ?? { revalidate: 60 },
+    // ...(next && { next }),
   };
 
   try {
